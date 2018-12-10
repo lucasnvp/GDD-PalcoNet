@@ -18,3 +18,5 @@ IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Factura') DROP TABLE [GEDIENT
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Forma_De_Pago') DROP TABLE [GEDIENTOS].[Forma_De_Pago]
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Item_Factura') DROP TABLE [GEDIENTOS].[Item_Factura]
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Tipo_De_Ubicacion') DROP TABLE [GEDIENTOS].[Tipo_De_Ubicacion]
+
+IF EXISTS (SELECT * FROM sys.schemas WHERE name = 'GEDIENTOS') DROP SCHEMA [GEDIENTOS]
