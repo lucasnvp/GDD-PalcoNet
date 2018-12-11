@@ -72,18 +72,20 @@ CREATE TABLE [GEDIENTOS].[Tarjetas_Credito](
 GO 
 
 -- 8 Tabla Empresas
-CREATE TABLE [GEDIENTOS].[Empresas](
-  Id_Empresa INT PRIMARY KEY,
-  Razon_Social VARCHAR,
-  Mail VARCHAR (255),
-  Telefono NUMERIC (18),
-  Direccion VARCHAR (50),
-  Nro_Piso NUMERIC (10),
-  Dpto VARCHAR (5),
-  Localidad VARCHAR (50),
-  Codigo_Postal VARCHAR (15),
-  Ciudad VARCHAR,
-  CUIT NUMERIC,
+CREATE TABLE [GEDIENTOS].[Empresa](
+  Empresa_Id INT PRIMARY KEY IDENTITY(1,1),
+  Empresa_Razon_Social VARCHAR (255),
+  Empresa_Cuit VARCHAR (255),
+  Empresa_Fecha_Creacion DATETIME,
+  Empresa_Mail VARCHAR (50),
+  Empresa_Direccion VARCHAR (50),
+  Empresa_Nro_Calle NUMERIC(18,0),
+  Empresa_Nro_Piso NUMERIC(18,0),
+  Empresa_Dpto VARCHAR (50),
+  Empresa_Codigo_Postal VARCHAR (50),
+  Empresa_Localidad VARCHAR (50),
+  Empresa_Ciudad VARCHAR (255),
+  Empresa_Telefono VARCHAR(50),
 )
 GO 
 
@@ -176,4 +178,28 @@ CREATE TABLE [GEDIENTOS].[Tipo_De_Ubicacion](
   Id_Tipo_De_Ubicacion INT PRIMARY KEY ,
   Descripcion VARCHAR (255) ,
 )
+GO
+
+-- Comienzo de la migracion
+INSERT INTO [GEDIENTOS].[Empresa] (
+	Empresa_Razon_Social, 
+	Empresa_Cuit, 
+	Empresa_Fecha_Creacion, 
+	Empresa_Mail, 
+	Empresa_Direccion, 
+	Empresa_Nro_Calle, 
+	Empresa_Nro_Piso,
+	Empresa_Dpto,
+	Empresa_Codigo_Postal
+) SELECT DISTINCT 
+	Espec_Empresa_Razon_Social,
+	Espec_Empresa_Cuit,
+	Espec_Empresa_Fecha_Creacion,
+	Espec_Empresa_Mail,
+	Espec_Empresa_Dom_Calle,
+	Espec_Empresa_Nro_Calle,
+	Espec_Empresa_Piso,
+	Espec_Empresa_Depto,
+	Espec_Empresa_Cod_Postal 
+FROM gd_esquema.Maestra
 GO
