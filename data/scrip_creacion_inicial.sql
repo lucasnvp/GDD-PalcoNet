@@ -6,9 +6,9 @@ GO
 
 -- 1 Tabla de usuarios.
 CREATE TABLE [GEDIENTOS].[Usuarios](
-  Id_Usuario INT PRIMARY KEY IDENTITY(1,1),
-  Username VARCHAR(255),
-  Password VARCHAR(255)
+  Id_Usuario INT PRIMARY KEY IDENTITY(1,1) ,
+  Username VARCHAR(255) ,
+  Password VARCHAR(255) ,
 )
 GO
 
@@ -44,23 +44,26 @@ CREATE TABLE [GEDIENTOS].[Rol_X_Funcionalidad](
 GO
 
 -- 6 Tabla Clientes
-CREATE TABLE [GEDIENTOS].[Clientes](
-  Id_Cliente INT PRIMARY KEY,
-  Nombre VARCHAR(255),
-  Apellido VARCHAR(255),
-  Tipo_DNI VARCHAR(4),
-  Nro_DNI NUMERIC(18),
-  CUIL NUMERIC(25),
-  Mail VARCHAR (255),
-  Telefono NUMERIC (18),
-  Direccion VARCHAR (50),
-  Nro_Piso NUMERIC (10),
-  Dpto VARCHAR (5),
-  Localidad VARCHAR (50),
-  Codigo_Postal VARCHAR (15),
-  Fecha_Nacimiento DATE,
-  Fecha_Creacion DATE,
-  Id_Tajeta_Credito INT
+CREATE TABLE [GEDIENTOS].[Cliente](
+  Cliente_Id INT PRIMARY KEY IDENTITY(1,1),
+  Cliente_Usuario_Id INT ,
+  Cliente_Dni NUMERIC (18) UNIQUE,
+  Cliente_Apellido VARCHAR (255) NOT NULL,
+  Cliente_Nombre VARCHAR (255) NOT NULL,
+  Cliente_Fecha_Nacimiento DATETIME,
+  Cliente_Mail VARCHAR (255),
+  Cliente_Domicilio_Calle VARCHAR (255),
+  Cliente_Nro_Calle NUMERIC (18),
+  Cliente_Nro_Piso NUMERIC (18),
+  Cliente_Dpto VARCHAR (255),
+  Cliente_Codigo_Postal VARCHAR (255),
+
+  Cliente_Tipo_DNI VARCHAR(4),
+  Cliente_CUIL NUMERIC(25),
+  Cliente_Telefono NUMERIC (18),
+  Cliente_Localidad VARCHAR (50),
+  Cliente_Fecha_Creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+  Cliente_Id_Tajeta_Credito INT
 )
 GO
 
@@ -74,8 +77,9 @@ GO
 -- 8 Tabla Empresas
 CREATE TABLE [GEDIENTOS].[Empresa](
   Empresa_Id INT PRIMARY KEY IDENTITY(1,1),
-  Empresa_Razon_Social VARCHAR (255),
-  Empresa_Cuit VARCHAR (255),
+  Empresa_Usuario_Id INT ,
+  Empresa_Razon_Social VARCHAR (255) NOT NULL,
+  Empresa_Cuit VARCHAR (255) NOT NULL UNIQUE,
   Empresa_Fecha_Creacion DATETIME,
   Empresa_Mail VARCHAR (50),
   Empresa_Direccion VARCHAR (50),
@@ -181,6 +185,7 @@ CREATE TABLE [GEDIENTOS].[Tipo_De_Ubicacion](
 GO
 
 -- Comienzo de la migracion
+-- Empresas
 INSERT INTO [GEDIENTOS].[Empresa] (
 	Empresa_Razon_Social, 
 	Empresa_Cuit, 
@@ -202,4 +207,31 @@ INSERT INTO [GEDIENTOS].[Empresa] (
 	Espec_Empresa_Depto,
 	Espec_Empresa_Cod_Postal 
 FROM gd_esquema.Maestra
+WHERE Espec_Empresa_Cuit IS NOT NULL
+GO
+
+INSERT INTO GEDIENTOS.Cliente (
+	Cliente_Dni ,
+	Cliente_Apellido ,
+	Cliente_Nombre ,
+	Cliente_Fecha_Nacimiento ,
+	Cliente_Mail ,
+	Cliente_Domicilio_Calle ,
+	Cliente_Nro_Calle ,
+	Cliente_Nro_Piso ,
+	Cliente_Dpto ,
+	Cliente_Codigo_Postal
+) SELECT DISTINCT
+	Cli_Dni ,
+	Cli_Apeliido ,
+	Cli_Nombre ,
+	Cli_Fecha_Nac ,
+	Cli_Mail ,
+	Cli_Dom_Calle ,
+	Cli_Nro_Calle ,
+	Cli_Piso ,
+	Cli_Depto ,
+	Cli_Cod_Postal 
+FROM gd_esquema.Maestra
+WHERE CLI_DNI IS NOT NULL
 GO
