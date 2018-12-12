@@ -95,9 +95,8 @@ GO
 
 -- 9 Tabla Rubro
 CREATE TABLE [GEDIENTOS].[Rubro](
-  Id_Rubro INT PRIMARY KEY,
-  Codigo INT,
-  Descripcion VARCHAR (255),
+  Rubro_Id INT PRIMARY KEY IDENTITY(1,1),
+  Rubro_Descripcion VARCHAR (255),
 )
 GO
 
@@ -110,9 +109,9 @@ CREATE TABLE [GEDIENTOS].[Precio_Grado](
 GO
 
 -- 11 Tabla Estados de Publicaciones
-CREATE TABLE [GEDIENTOS].Estados_Publicaciones(
-  Id_Estado_Publicacion INT PRIMARY KEY,
-  Descripcion VARCHAR (255),
+CREATE TABLE [GEDIENTOS].[Estado_Publicacion](
+  Estado_Publicacion_Id INT PRIMARY KEY IDENTITY(1,1),
+  Estado_Publicacion_Descripcion VARCHAR (255),
 )
 GO
 
@@ -127,17 +126,20 @@ CREATE TABLE [GEDIENTOS].[Ubicaciones](
 GO
 
 -- 13 Tabla Espectaculos
-CREATE TABLE [GEDIENTOS].[Espectaculos](
-  Id_Espectaculo INT PRIMARY KEY ,
-  Id_Rubro INT,
+CREATE TABLE [GEDIENTOS].[Espectaculo](
+  Espectaculo_Id INT PRIMARY KEY IDENTITY(1,1) ,
+  Espectaculo_Empresa_Id INT,
+  Espectaculo_Codigo NUMERIC (18) ,
+  Espectaculo_Descripcion VARCHAR (255) ,
+  Espectaculo_Fecha_Espectaculo DATETIME ,
+  Espectaculo_Fecha_Vencimiento DATETIME ,
+  Espectaculo_Rubro_Id INT ,
+  Espectaculo_Estado_Publicacion_Id INT ,
+	
   Id_Ubicaciones INT ,
   Id_Precio_Grado INT ,
   Id_Usuario INT ,
-  Id_Estado_Publicacion INT ,
-  Codigo INT,
-  Descripcion VARCHAR (255),
   Fecha_Publicacion DATE,
-  Fecha_Espectaculo DATE,
   Direccion VARCHAR (255),
 )
 GO
@@ -235,3 +237,38 @@ INSERT INTO GEDIENTOS.Cliente (
 FROM gd_esquema.Maestra
 WHERE CLI_DNI IS NOT NULL
 GO
+
+INSERT INTO GEDIENTOS.Estado_Publicacion ( Estado_Publicacion_Descripcion ) VALUES ('Borrador') 
+GO
+INSERT INTO GEDIENTOS.Estado_Publicacion ( Estado_Publicacion_Descripcion ) VALUES ('Publicada') 
+GO
+INSERT INTO GEDIENTOS.Estado_Publicacion ( Estado_Publicacion_Descripcion ) VALUES ('Finalizada') 
+GO
+
+INSERT INTO GEDIENTOS.Espectaculo(
+	Espectaculo_Empresa_Id ,
+	Espectaculo_Codigo  ,
+	Espectaculo_Descripcion ,
+	Espectaculo_Fecha_Espectaculo ,
+	Espectaculo_Fecha_Vencimiento ,
+	Espectaculo_Estado_Publicacion_Id
+) SELECT
+	empresa.Empresa_Id AS Empresa_Id, 
+	[Espectaculo_Cod],
+	[Espectaculo_Descripcion],
+	[Espectaculo_Fecha] ,
+	[Espectaculo_Fecha_Venc] ,
+	ep.Estado_Publicacion_Id AS Estado_Publicacion
+FROM gd_esquema.Maestra maestra
+JOIN [GEDIENTOS].[Empresa] empresa
+	ON empresa.Empresa_Cuit = maestra.[Espec_Empresa_Cuit]
+JOIN [GEDIENTOS].[Estado_Publicacion] ep
+	ON ep.Estado_Publicacion_Descripcion = maestra.[Espectaculo_Estado]
+GROUP BY
+	empresa.Empresa_Id, 
+	[Espectaculo_Cod],
+	[Espectaculo_Descripcion],
+	[Espectaculo_Fecha] ,
+	[Espectaculo_Fecha_Venc] ,
+	[Espectaculo_Rubro_Descripcion] ,
+	ep.Estado_Publicacion_Id
