@@ -1,6 +1,6 @@
 ﻿namespace PalcoNet.Abm_Cliente
 {
-    partial class Modificacion
+    partial class Alta
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnLimpiar = new System.Windows.Forms.Button();
-            this.btnIngresar = new System.Windows.Forms.Button();
-            this.gpTCredito = new System.Windows.Forms.GroupBox();
-            this.txtNumeroTarjeta = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.gbOtros = new System.Windows.Forms.GroupBox();
-            this.dtpFechaCreacion = new System.Windows.Forms.DateTimePicker();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblAltaDeCliente = new System.Windows.Forms.Label();
+            this.lblNuevoCliente = new System.Windows.Forms.Label();
             this.gbDatos = new System.Windows.Forms.GroupBox();
+            this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
+            this.cbTipodoc = new System.Windows.Forms.ComboBox();
             this.txtCP = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtDepartamento = new System.Windows.Forms.TextBox();
@@ -61,87 +57,39 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.lblUpdCliente = new System.Windows.Forms.Label();
-            this.cbTipodoc = new System.Windows.Forms.ComboBox();
-            this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
-            this.gpTCredito.SuspendLayout();
-            this.gbOtros.SuspendLayout();
+            this.gbOtros = new System.Windows.Forms.GroupBox();
+            this.dtpFechaCreacion = new System.Windows.Forms.DateTimePicker();
+            this.label12 = new System.Windows.Forms.Label();
+            this.gpTCredito = new System.Windows.Forms.GroupBox();
+            this.txtNumeroTarjeta = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnIngresar = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.gbDatos.SuspendLayout();
+            this.gbOtros.SuspendLayout();
+            this.gpTCredito.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnLimpiar
+            // lblAltaDeCliente
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(140, 730);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(131, 35);
-            this.btnLimpiar.TabIndex = 60;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.lblAltaDeCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAltaDeCliente.Location = new System.Drawing.Point(344, 25);
+            this.lblAltaDeCliente.Name = "lblAltaDeCliente";
+            this.lblAltaDeCliente.Size = new System.Drawing.Size(274, 42);
+            this.lblAltaDeCliente.TabIndex = 0;
+            this.lblAltaDeCliente.Text = "Alta de Clientes";
+            this.lblAltaDeCliente.Click += new System.EventHandler(this.label1_Click);
             // 
-            // btnIngresar
+            // lblNuevoCliente
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(716, 730);
-            this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(131, 35);
-            this.btnIngresar.TabIndex = 59;
-            this.btnIngresar.Text = "Ingresar";
-            this.btnIngresar.UseVisualStyleBackColor = true;
-            // 
-            // gpTCredito
-            // 
-            this.gpTCredito.Controls.Add(this.txtNumeroTarjeta);
-            this.gpTCredito.Controls.Add(this.label15);
-            this.gpTCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gpTCredito.Location = new System.Drawing.Point(70, 479);
-            this.gpTCredito.Name = "gpTCredito";
-            this.gpTCredito.Size = new System.Drawing.Size(829, 114);
-            this.gpTCredito.TabIndex = 58;
-            this.gpTCredito.TabStop = false;
-            this.gpTCredito.Text = "Datos de Tarjeta de Crédito Asociada";
-            // 
-            // txtNumeroTarjeta
-            // 
-            this.txtNumeroTarjeta.Location = new System.Drawing.Point(227, 61);
-            this.txtNumeroTarjeta.Name = "txtNumeroTarjeta";
-            this.txtNumeroTarjeta.Size = new System.Drawing.Size(417, 26);
-            this.txtNumeroTarjeta.TabIndex = 43;
-            // 
-            // label15
-            // 
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label15.Location = new System.Drawing.Point(126, 64);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(95, 23);
-            this.label15.TabIndex = 42;
-            this.label15.Text = "Número";
-            // 
-            // gbOtros
-            // 
-            this.gbOtros.Controls.Add(this.dtpFechaCreacion);
-            this.gbOtros.Controls.Add(this.label12);
-            this.gbOtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbOtros.Location = new System.Drawing.Point(70, 618);
-            this.gbOtros.Name = "gbOtros";
-            this.gbOtros.Size = new System.Drawing.Size(829, 82);
-            this.gbOtros.TabIndex = 57;
-            this.gbOtros.TabStop = false;
-            this.gbOtros.Text = "Otros";
-            // 
-            // dtpFechaCreacion
-            // 
-            this.dtpFechaCreacion.Location = new System.Drawing.Point(227, 32);
-            this.dtpFechaCreacion.Name = "dtpFechaCreacion";
-            this.dtpFechaCreacion.Size = new System.Drawing.Size(417, 26);
-            this.dtpFechaCreacion.TabIndex = 45;
-            // 
-            // label12
-            // 
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label12.Location = new System.Drawing.Point(34, 32);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(209, 23);
-            this.label12.TabIndex = 44;
-            this.label12.Text = "Fecha de Creación";
+            this.lblNuevoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNuevoCliente.Location = new System.Drawing.Point(24, 86);
+            this.lblNuevoCliente.Name = "lblNuevoCliente";
+            this.lblNuevoCliente.Size = new System.Drawing.Size(511, 42);
+            this.lblNuevoCliente.TabIndex = 1;
+            this.lblNuevoCliente.Text = "Ingrese los datos para crear un nuevo cliente";
+            this.lblNuevoCliente.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // gbDatos
             // 
@@ -172,12 +120,27 @@
             this.gbDatos.Controls.Add(this.txtNombre);
             this.gbDatos.Controls.Add(this.lblNombre);
             this.gbDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbDatos.Location = new System.Drawing.Point(64, 106);
+            this.gbDatos.Location = new System.Drawing.Point(48, 131);
             this.gbDatos.Name = "gbDatos";
             this.gbDatos.Size = new System.Drawing.Size(835, 367);
-            this.gbDatos.TabIndex = 56;
+            this.gbDatos.TabIndex = 2;
             this.gbDatos.TabStop = false;
             this.gbDatos.Text = "Datos Personales";
+            // 
+            // dtpFechaNac
+            // 
+            this.dtpFechaNac.Location = new System.Drawing.Point(267, 95);
+            this.dtpFechaNac.Name = "dtpFechaNac";
+            this.dtpFechaNac.Size = new System.Drawing.Size(131, 26);
+            this.dtpFechaNac.TabIndex = 54;
+            // 
+            // cbTipodoc
+            // 
+            this.cbTipodoc.FormattingEnabled = true;
+            this.cbTipodoc.Location = new System.Drawing.Point(652, 18);
+            this.cbTipodoc.Name = "cbTipodoc";
+            this.cbTipodoc.Size = new System.Drawing.Size(131, 28);
+            this.cbTipodoc.TabIndex = 53;
             // 
             // txtCP
             // 
@@ -373,63 +336,109 @@
             this.lblNombre.TabIndex = 26;
             this.lblNombre.Text = "Nombre";
             // 
-            // lblUpdCliente
+            // gbOtros
             // 
-            this.lblUpdCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUpdCliente.Location = new System.Drawing.Point(40, 61);
-            this.lblUpdCliente.Name = "lblUpdCliente";
-            this.lblUpdCliente.Size = new System.Drawing.Size(511, 42);
-            this.lblUpdCliente.TabIndex = 55;
-            this.lblUpdCliente.Text = "Ingrese el/los datos para actualizar un cliente";
+            this.gbOtros.Controls.Add(this.dtpFechaCreacion);
+            this.gbOtros.Controls.Add(this.label12);
+            this.gbOtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbOtros.Location = new System.Drawing.Point(54, 643);
+            this.gbOtros.Name = "gbOtros";
+            this.gbOtros.Size = new System.Drawing.Size(829, 82);
+            this.gbOtros.TabIndex = 3;
+            this.gbOtros.TabStop = false;
+            this.gbOtros.Text = "Otros";
             // 
-            // cbTipodoc
+            // dtpFechaCreacion
             // 
-            this.cbTipodoc.FormattingEnabled = true;
-            this.cbTipodoc.Location = new System.Drawing.Point(652, 21);
-            this.cbTipodoc.Name = "cbTipodoc";
-            this.cbTipodoc.Size = new System.Drawing.Size(131, 28);
-            this.cbTipodoc.TabIndex = 52;
+            this.dtpFechaCreacion.Location = new System.Drawing.Point(261, 32);
+            this.dtpFechaCreacion.Name = "dtpFechaCreacion";
+            this.dtpFechaCreacion.Size = new System.Drawing.Size(383, 26);
+            this.dtpFechaCreacion.TabIndex = 45;
             // 
-            // dtpFechaNac
+            // label12
             // 
-            this.dtpFechaNac.Location = new System.Drawing.Point(267, 95);
-            this.dtpFechaNac.Name = "dtpFechaNac";
-            this.dtpFechaNac.Size = new System.Drawing.Size(131, 26);
-            this.dtpFechaNac.TabIndex = 53;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label12.Location = new System.Drawing.Point(34, 32);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(209, 23);
+            this.label12.TabIndex = 44;
+            this.label12.Text = "Fecha de Creación";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
-            // Modificacion
+            // gpTCredito
+            // 
+            this.gpTCredito.Controls.Add(this.txtNumeroTarjeta);
+            this.gpTCredito.Controls.Add(this.label15);
+            this.gpTCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gpTCredito.Location = new System.Drawing.Point(54, 504);
+            this.gpTCredito.Name = "gpTCredito";
+            this.gpTCredito.Size = new System.Drawing.Size(829, 114);
+            this.gpTCredito.TabIndex = 52;
+            this.gpTCredito.TabStop = false;
+            this.gpTCredito.Text = "Datos de Tarjeta de Crédito Asociada";
+            // 
+            // txtNumeroTarjeta
+            // 
+            this.txtNumeroTarjeta.Location = new System.Drawing.Point(261, 64);
+            this.txtNumeroTarjeta.Name = "txtNumeroTarjeta";
+            this.txtNumeroTarjeta.Size = new System.Drawing.Size(379, 26);
+            this.txtNumeroTarjeta.TabIndex = 43;
+            // 
+            // label15
+            // 
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label15.Location = new System.Drawing.Point(126, 64);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(95, 23);
+            this.label15.TabIndex = 42;
+            this.label15.Text = "Número";
+            // 
+            // btnIngresar
+            // 
+            this.btnIngresar.Location = new System.Drawing.Point(700, 755);
+            this.btnIngresar.Name = "btnIngresar";
+            this.btnIngresar.Size = new System.Drawing.Size(131, 35);
+            this.btnIngresar.TabIndex = 53;
+            this.btnIngresar.Text = "Ingresar";
+            this.btnIngresar.UseVisualStyleBackColor = true;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(124, 755);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(131, 35);
+            this.btnLimpiar.TabIndex = 54;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            // 
+            // Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(938, 826);
+            this.ClientSize = new System.Drawing.Size(956, 802);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.gpTCredito);
             this.Controls.Add(this.gbOtros);
             this.Controls.Add(this.gbDatos);
-            this.Controls.Add(this.lblUpdCliente);
-            this.Name = "Modificacion";
-            this.Text = "Actualizar";
-            this.gpTCredito.ResumeLayout(false);
-            this.gpTCredito.PerformLayout();
-            this.gbOtros.ResumeLayout(false);
+            this.Controls.Add(this.lblNuevoCliente);
+            this.Controls.Add(this.lblAltaDeCliente);
+            this.Name = "Alta";
+            this.Text = "Alta Clientes";
+            this.Load += new System.EventHandler(this.Alta_Load);
             this.gbDatos.ResumeLayout(false);
             this.gbDatos.PerformLayout();
+            this.gbOtros.ResumeLayout(false);
+            this.gpTCredito.ResumeLayout(false);
+            this.gpTCredito.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnLimpiar;
-        private System.Windows.Forms.Button btnIngresar;
-        private System.Windows.Forms.GroupBox gpTCredito;
-        private System.Windows.Forms.TextBox txtNumeroTarjeta;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.GroupBox gbOtros;
-        private System.Windows.Forms.DateTimePicker dtpFechaCreacion;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblAltaDeCliente;
+        private System.Windows.Forms.Label lblNuevoCliente;
         private System.Windows.Forms.GroupBox gbDatos;
         private System.Windows.Forms.TextBox txtCP;
         private System.Windows.Forms.Label label11;
@@ -455,8 +464,15 @@
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Label lblUpdCliente;
-        private System.Windows.Forms.DateTimePicker dtpFechaNac;
+        private System.Windows.Forms.GroupBox gbOtros;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DateTimePicker dtpFechaCreacion;
+        private System.Windows.Forms.GroupBox gpTCredito;
+        private System.Windows.Forms.TextBox txtNumeroTarjeta;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnIngresar;
+        private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.ComboBox cbTipodoc;
+        private System.Windows.Forms.DateTimePicker dtpFechaNac;
     }
 }

@@ -61,5 +61,10 @@ namespace PalcoNet.Abm_Cliente
         {
 
         }
+
+        private void Alta_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

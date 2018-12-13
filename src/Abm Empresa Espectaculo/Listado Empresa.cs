@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Abm_Cliente
+namespace PalcoNet.Abm_Empresa_Espectaculo
 {
-    public partial class Modificacion : Form
+    public partial class Listado_Empresa : Form
     {
-        public Modificacion()
+        public Listado_Empresa()
         {
             InitializeComponent();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

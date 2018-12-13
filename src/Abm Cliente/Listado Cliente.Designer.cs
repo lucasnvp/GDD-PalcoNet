@@ -40,14 +40,14 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblBusqueda = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.gD2C2018DataSet = new PalcoNet.GD2C2018DataSet();
             this.gD2C2018DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gD2C2018DataSet = new PalcoNet.GD2C2018DataSet();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.gbDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // gbDatos
@@ -154,15 +154,15 @@
             this.dataGridView1.TabIndex = 59;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // gD2C2018DataSet
-            // 
-            this.gD2C2018DataSet.DataSetName = "GD2C2018DataSet";
-            this.gD2C2018DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // gD2C2018DataSetBindingSource
             // 
             this.gD2C2018DataSetBindingSource.DataSource = this.gD2C2018DataSet;
             this.gD2C2018DataSetBindingSource.Position = 0;
+            // 
+            // gD2C2018DataSet
+            // 
+            this.gD2C2018DataSet.DataSetName = "GD2C2018DataSet";
+            this.gD2C2018DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnLimpiar
             // 
@@ -193,12 +193,12 @@
             this.Controls.Add(this.lblBusqueda);
             this.Controls.Add(this.gbDatos);
             this.Name = "Listado";
-            this.Text = "Listado de Selección";
+            this.Text = "Listado de Clientes";
             this.gbDatos.ResumeLayout(false);
             this.gbDatos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
