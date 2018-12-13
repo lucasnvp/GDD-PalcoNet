@@ -68,6 +68,12 @@
     <Compile Include="Abm Empresa Espectaculo\Alta Empresa.Designer.cs">
       <DependentUpon>Alta Empresa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Empresa Espectaculo\Listado Empresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Empresa Espectaculo\Listado Empresa.Designer.cs">
+      <DependentUpon>Listado Empresa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Empresa Espectaculo\Modificacion Empresa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     <EmbeddedResource Include="Abm Empresa Espectaculo\Alta Empresa.resx">
       <DependentUpon>Alta Empresa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Empresa Espectaculo\Listado Empresa.resx">
+      <DependentUpon>Listado Empresa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Empresa Espectaculo\Modificacion Empresa.resx">
       <DependentUpon>Modificacion Empresa.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +186,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Registro de Usuario\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="GD2C2018DataSet.xsc">
       <DependentUpon>GD2C2018DataSet.xsd</DependentUpon>
     </None>

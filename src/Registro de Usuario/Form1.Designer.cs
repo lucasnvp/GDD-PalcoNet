@@ -28,11 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(277, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 30);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(719, 646);
+            this.Controls.Add(this.label1);
+            this.Name = "Form1";
+            this.Text = "Registro";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
     }
 }
