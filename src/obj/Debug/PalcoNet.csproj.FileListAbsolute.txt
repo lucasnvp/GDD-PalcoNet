@@ -1,1 +1,10 @@
 \\VBOXSVR\PalcoNet\src\PalcoNet\bin\Debug\PalcoNet.exe.config
+C:\Users\user\Desktop\GDD-PalcoNet\src\bin\Debug\PalcoNet.exe.config
+C:\Users\user\Desktop\GDD-PalcoNet\src\bin\Debug\PalcoNet.exe
+C:\Users\user\Desktop\GDD-PalcoNet\src\bin\Debug\PalcoNet.pdb
+C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.csprojResolveAssemblyReference.cache
+C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.Properties.Resources.resources
+C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.csproj.GenerateResource.Cache
+C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.exe
+C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.pdb
+C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Cliente.Form1.resources
