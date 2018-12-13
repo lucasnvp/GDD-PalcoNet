@@ -174,8 +174,8 @@ GO
 
 -- 17 Tabla Forma de pago
 CREATE TABLE [GEDIENTOS].[Forma_De_Pago](
-  Id_Forma_De_Pago INT PRIMARY KEY ,
-  Descripcion VARCHAR (255) ,
+  Forma_De_Pago_Id INT PRIMARY KEY IDENTITY(1,1),
+  Forma_De_Pago_Descripcion VARCHAR (255) ,
 )
 GO
 
@@ -272,3 +272,6 @@ GROUP BY
 	[Espectaculo_Fecha_Venc] ,
 	[Espectaculo_Rubro_Descripcion] ,
 	ep.Estado_Publicacion_Id
+GO
+
+INSERT INTO GEDIENTOS.Forma_De_Pago ( Forma_De_Pago_Descripcion ) SELECT DISTINCT Forma_Pago_Desc FROM gd_esquema.Maestra WHERE Forma_Pago_Desc IS NOT NULL
