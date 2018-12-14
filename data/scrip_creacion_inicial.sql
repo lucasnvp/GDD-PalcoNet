@@ -68,9 +68,9 @@ CREATE TABLE [GEDIENTOS].[Cliente](
 GO
 
 -- 7 Tabla Tajetas de Credito
-CREATE TABLE [GEDIENTOS].[Tarjetas_Credito](
-  Id_Tarjeta_Credito INT,
-  Nro NUMERIC (30),
+CREATE TABLE [GEDIENTOS].[Tarjeta_Credito](
+  Tarjeta_Credito_Id INT,
+  Tarjeta_Credito_Nro NUMERIC (30),
 )
 GO 
 
@@ -146,19 +146,20 @@ GO
 
 -- 14 Tabla Compras
 CREATE TABLE [GEDIENTOS].[Compra](
-  Id_Cliente INT ,
-  Id_Factura INT ,
-  Fecha_Compra DATE ,
-  Cantidad NUMERIC (18) ,
+  Compra_Id INT PRIMARY KEY IDENTITY(1,1),
+  Compra_Cliente_Id INT ,
+  Compra_Factura_Id INT ,
+  Compra_Fecha_Compra DATE ,
+  Compra_Cantidad NUMERIC (18) ,
 )
 GO 
 
 -- 15 Tabla Factura
 CREATE TABLE [GEDIENTOS].[Factura](
-  Id_Factura INT PRIMARY KEY ,
-  Nro_Factura NUMERIC (18) ,
-  Fecha_Factura DATE ,
-  Tota_Factura NUMERIC (18) ,
+  Factura_Id INT PRIMARY KEY IDENTITY(1,1),
+  Factura_Nro NUMERIC (18, 0) ,
+  Factura_Fecha DATETIME ,
+  Factura_Total NUMERIC (18, 2) ,
 )
 GO
 
@@ -253,19 +254,19 @@ INSERT INTO GEDIENTOS.Espectaculo(
 	Espectaculo_Fecha_Vencimiento ,
 	Espectaculo_Estado_Publicacion_Id
 ) SELECT
-	empresa.Empresa_Id AS Empresa_Id, 
-	[Espectaculo_Cod],
-	[Espectaculo_Descripcion],
-	[Espectaculo_Fecha] ,
-	[Espectaculo_Fecha_Venc] ,
+	Empresa.Empresa_Id AS Empresa_Id , 
+	Espectaculo_Cod ,
+	Espectaculo_Descripcion ,
+	Espectaculo_Fecha ,
+	Espectaculo_Fecha_Venc ,
 	ep.Estado_Publicacion_Id AS Estado_Publicacion
 FROM gd_esquema.Maestra maestra
-JOIN [GEDIENTOS].[Empresa] empresa
+JOIN GEDIENTOS.Empresa Empresa
 	ON empresa.Empresa_Cuit = maestra.[Espec_Empresa_Cuit]
 JOIN [GEDIENTOS].[Estado_Publicacion] ep
 	ON ep.Estado_Publicacion_Descripcion = maestra.[Espectaculo_Estado]
 GROUP BY
-	empresa.Empresa_Id, 
+	Empresa.Empresa_Id, 
 	[Espectaculo_Cod],
 	[Espectaculo_Descripcion],
 	[Espectaculo_Fecha] ,
@@ -275,3 +276,21 @@ GROUP BY
 GO
 
 INSERT INTO GEDIENTOS.Forma_De_Pago ( Forma_De_Pago_Descripcion ) SELECT DISTINCT Forma_Pago_Desc FROM gd_esquema.Maestra WHERE Forma_Pago_Desc IS NOT NULL
+GO
+
+INSERT INTO GEDIENTOS.Factura (Factura_Nro, Factura_Fecha, Factura_Total)
+SELECT Maestra.Factura_Nro, Maestra.Factura_Fecha, Maestra.Factura_Total
+FROM gd_esquema.Maestra Maestra 
+WHERE Maestra.Factura_Nro IS NOT NULL
+GROUP BY Maestra.Factura_Nro, Maestra.Factura_Fecha, Maestra.Factura_Total
+GO
+
+INSERT INTO GEDIENTOS.Compra (Compra_Cliente_Id, Compra_Factura_Id, Compra_Fecha_Compra, Compra_Cantidad)
+SELECT DISTINCT Cli.Cliente_Id, Fac.Factura_Id, Maestra.Compra_Fecha, Maestra.Compra_Cantidad
+FROM gd_esquema.Maestra Maestra 
+JOIN GEDIENTOS.Factura Fac
+ON Fac.Factura_Nro = Maestra.Factura_Nro
+JOIN GEDIENTOS.Cliente Cli
+ON Cli.Cliente_Dni = Maestra.Cli_Dni
+WHERE Maestra.Factura_Nro IS NOT NULL
+GROUP BY Cli.Cliente_Id, Fac.Factura_Id, Maestra.Compra_Fecha, Maestra.Compra_Cantidad
