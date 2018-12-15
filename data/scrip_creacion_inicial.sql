@@ -5,40 +5,40 @@ CREATE SCHEMA [GEDIENTOS]
 GO
 
 -- 1 Tabla de usuarios.
-CREATE TABLE [GEDIENTOS].[Usuarios](
-  Id_Usuario INT PRIMARY KEY IDENTITY(1,1) ,
-  Username VARCHAR(255) ,
-  Password VARCHAR(255) ,
+CREATE TABLE [GEDIENTOS].[Usuario](
+  Usuario_Id INT PRIMARY KEY IDENTITY(1,1) ,
+  Usuario_Username VARCHAR(255) ,
+  Usuario_Password VARCHAR(255) ,
 )
 GO
 
 -- 2 Tabla de Asignaciones de Roles y Usuarios cada usuario puede tener mas de un rol
 CREATE TABLE [GEDIENTOS].[Asignacion_Rol](
-  Id_Rol INT,
-  Id_Usuario INT,
+  Asignacion_Rol_Id INT,
+  Asignacion_Rol_Usuario_Id INT,
   --PRIMARY KEY (Id_Rol,Id_Usuario)
 )
 GO
 
 -- 3 Tabla de Roles de Usuario
 CREATE TABLE [GEDIENTOS].[Rol](
-  Id_Rol INT PRIMARY KEY IDENTITY(1,1),
-  Nombre VARCHAR(255),
-  Activo BIT,
+  Rol_Id INT PRIMARY KEY IDENTITY(1,1),
+  Rol_Nombre VARCHAR(255),
+  Rol_Activo BIT,
 )
 GO
 
 -- 4 Tabla de Funcionalidades
-CREATE TABLE [GEDIENTOS].[Funcionalidades](
-  Id_Funcionalidad INT PRIMARY KEY IDENTITY(1,1),
-  Descripcion VARCHAR(255),
+CREATE TABLE [GEDIENTOS].[Funcionalidad](
+  Funcionalidad_Id INT PRIMARY KEY IDENTITY(1,1),
+  Funcionalidad_Descripcion VARCHAR(255),
 )
 GO
 
 -- 5 Creamos la tabla de roles por funcionalidad, cada rol puede tener muchas funcionalidades y una funcionalidad puede estar presente en varios roles.
 CREATE TABLE [GEDIENTOS].[Rol_X_Funcionalidad](
-  Id_Funcionalidad INT,
-  Id_Rol INT,
+  Funcionalidad_Id INT,
+  Rol_Id INT,
   --PRIMARY KEY (Id_Funcionalidad,Id_Rol)
 )
 GO
@@ -102,9 +102,9 @@ GO
 
 -- 10 Tabla Precio por Grado
 CREATE TABLE [GEDIENTOS].[Precio_Grado](
-  Id_Precio_Grado INT PRIMARY KEY,
-  Descripcion VARCHAR (255),
-  Precio NUMERIC,
+  Precio_Grado_Id INT PRIMARY KEY,
+  Precio_Grado_Descripcion VARCHAR (255),
+  Precio_Grado_Precio NUMERIC(18),
 )
 GO
 
@@ -116,12 +116,14 @@ CREATE TABLE [GEDIENTOS].[Estado_Publicacion](
 GO
 
 -- 12 Tabla Ubicaciones
-CREATE TABLE [GEDIENTOS].[Ubicaciones](
-  Id_Ubicaciones INT PRIMARY KEY ,
-  Fila VARCHAR (255) ,
-  Asiento VARCHAR (255) ,
-  Precio INT ,
-  Tipo_Ubicacion INT ,
+CREATE TABLE [GEDIENTOS].[Ubicacion](
+  Ubicacion_Id INT PRIMARY KEY IDENTITY(1,1) ,
+  Ubicacion_Fila VARCHAR (3) ,
+  Ubicacion_Asiento NUMERIC (18,0) ,
+  Ubicacion_Sin_Numerar BIT,
+  Ubicacion_Precio NUMERIC (18,0) ,
+  Ubicacion_Tipo_Codigo NUMERIC (18,0) ,
+  Ubicacion_Tipo_Descripcion INT ,
 )
 GO
 
@@ -136,11 +138,11 @@ CREATE TABLE [GEDIENTOS].[Espectaculo](
   Espectaculo_Rubro_Id INT ,
   Espectaculo_Estado_Publicacion_Id INT ,
 	
-  Id_Ubicaciones INT ,
-  Id_Precio_Grado INT ,
-  Id_Usuario INT ,
-  Fecha_Publicacion DATE,
-  Direccion VARCHAR (255),
+  Espectaculo_Ubicaciones_Id INT ,
+  Espectaculo_Precio_Grado_Id INT ,
+  Espectaculo_Usuario_Id INT ,
+  Espectaculo_Fecha_Publicacion DATE,
+  Espectaculo_Direccion VARCHAR (255),
 )
 GO
 
@@ -182,8 +184,8 @@ GO
 
 -- 18 Tabla Tipo_De_Ubicacion
 CREATE TABLE [GEDIENTOS].[Tipo_De_Ubicacion](
-  Id_Tipo_De_Ubicacion INT PRIMARY KEY ,
-  Descripcion VARCHAR (255) ,
+  Tipo_De_Ubicacion_Id INT PRIMARY KEY IDENTITY(1,1),
+  Tipo_De_Ubicacion_Descripcion VARCHAR (255) ,
 )
 GO
 
@@ -294,3 +296,15 @@ JOIN GEDIENTOS.Cliente Cli
 ON Cli.Cliente_Dni = Maestra.Cli_Dni
 WHERE Maestra.Factura_Nro IS NOT NULL
 GROUP BY Cli.Cliente_Id, Fac.Factura_Id, Maestra.Compra_Fecha, Maestra.Compra_Cantidad
+GO
+
+INSERT INTO GEDIENTOS.Tipo_De_Ubicacion (Tipo_De_Ubicacion_Descripcion)
+SELECT DISTINCT Ubicacion_Tipo_Descripcion FROM gd_esquema.Maestra
+GO
+
+INSERT INTO GEDIENTOS.Ubicacion (Ubicacion_Fila, Ubicacion_Asiento, Ubicacion_Sin_Numerar, Ubicacion_Precio, Ubicacion_Tipo_Codigo, Ubicacion_Tipo_Descripcion)
+SELECT Ubicacion_Fila, Ubicacion_Asiento, Ubicacion_Sin_numerar, Ubicacion_Precio, Ubicacion_Tipo_Codigo, Ubi.Tipo_De_Ubicacion_Id
+FROM gd_esquema.Maestra Maestra
+JOIN GEDIENTOS.Tipo_De_Ubicacion Ubi
+ON Ubi.Tipo_De_Ubicacion_Descripcion = Maestra.Ubicacion_Tipo_Descripcion
+WHERE Ubicacion_Tipo_Codigo IS NOT NULL
