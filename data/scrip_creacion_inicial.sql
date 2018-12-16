@@ -332,10 +332,18 @@ GO
 
 INSERT INTO GEDIENTOS.Item_Factura (Factura_Id,Item_Factura_Compra_Id, Item_Factura_Cantidad, Item_Factura_Monto, Item_Factura_Descripcion)
 SELECT Fac.Factura_Id, Com.Compra_Id, Maestra.Item_Factura_Cantidad, Maestra.Item_Factura_Monto, Maestra.Item_Factura_Descripcion
-FROM gd_esquema.Maestra Maestra
+FROM gd_esquema.Maestra Maestra 
 JOIN GEDIENTOS.Factura Fac
 	ON Fac.Factura_Nro = Maestra.Factura_Nro
+	JOIN GEDIENTOS.Espectaculo Esp
+	ON Esp.Espectaculo_Codigo = Maestra.Espectaculo_Cod 
+JOIN GEDIENTOS.Ubicacion Ubi 
+	ON Esp.Espectaculo_Id = Ubi.Ubicacion_Espectaculo_Id 
+	AND Ubi.Ubicacion_Asiento = Maestra.Ubicacion_Asiento 
+	AND Ubi.Ubicacion_Fila = Maestra.Ubicacion_Fila
 JOIN GEDIENTOS.Compra Com
 	ON Com.Compra_Factura_Id = Fac.Factura_Id
+	AND Com.Compra_Espectaculo_Id = Esp.Espectaculo_Id
+	AND Com.Compra_Ubicacion_Id = Ubi.Ubicacion_Id
 WHERE Maestra.Factura_Nro IS NOT NULL
 GO
