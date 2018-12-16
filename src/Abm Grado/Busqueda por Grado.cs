@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet
+namespace PalcoNet.Abm_Grado
 {
-    public partial class Login : Form
+    public partial class BusquedaPorGrado : Form
     {
-        public Login()
+        public BusquedaPorGrado()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

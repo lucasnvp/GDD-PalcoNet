@@ -8,26 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Abm_Rol
+namespace PalcoNet.Registro_de_Usuario
 {
-    public partial class Rol : Form
+    public partial class Form1 : Form
     {
-        public Rol()
+        public Form1()
         {
             InitializeComponent();
         }
 
-        private void Btn_Crear_Click(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void Btn_Buscar_Click(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void DGV_Roles_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
