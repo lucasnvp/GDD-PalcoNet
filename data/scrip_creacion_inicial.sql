@@ -335,7 +335,7 @@ SELECT Fac.Factura_Id, Com.Compra_Id, Maestra.Item_Factura_Cantidad, Maestra.Ite
 FROM gd_esquema.Maestra Maestra 
 JOIN GEDIENTOS.Factura Fac
 	ON Fac.Factura_Nro = Maestra.Factura_Nro
-	JOIN GEDIENTOS.Espectaculo Esp
+JOIN GEDIENTOS.Espectaculo Esp
 	ON Esp.Espectaculo_Codigo = Maestra.Espectaculo_Cod 
 JOIN GEDIENTOS.Ubicacion Ubi 
 	ON Esp.Espectaculo_Id = Ubi.Ubicacion_Espectaculo_Id 
