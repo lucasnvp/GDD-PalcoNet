@@ -1,6 +1,6 @@
 ﻿namespace PalcoNet.Abm_Cliente
 {
-    partial class Modificacion
+    partial class ModificacionCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -399,7 +399,7 @@
             this.lblUpdCliente.Text = "Ingrese el/los datos para actualizar un cliente";
             this.lblUpdCliente.Click += new System.EventHandler(this.lblUpdCliente_Click);
             // 
-            // Modificacion
+            // ModificacionCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -410,7 +410,7 @@
             this.Controls.Add(this.gbOtros);
             this.Controls.Add(this.gbDatos);
             this.Controls.Add(this.lblUpdCliente);
-            this.Name = "Modificacion";
+            this.Name = "ModificacionCliente";
             this.Text = "Actualizar Cliente";
             this.gpTCredito.ResumeLayout(false);
             this.gpTCredito.PerformLayout();

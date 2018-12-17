@@ -1,6 +1,6 @@
 ﻿namespace PalcoNet.Abm_Empresa_Espectaculo
 {
-    partial class Modificacion
+    partial class ModificacionEmpresa
     {
         /// <summary>
         /// Required designer variable.
@@ -285,7 +285,7 @@
             this.lblNuevoEmpresa.TabIndex = 62;
             this.lblNuevoEmpresa.Text = "Ingrese el/los datos para actualizar una empresa";
             // 
-            // Modificacion
+            // ModificacionEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -295,7 +295,7 @@
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.gbDatos);
             this.Controls.Add(this.lblNuevoEmpresa);
-            this.Name = "Modificacion";
+            this.Name = "ModificacionEmpresa";
             this.Text = "Actualizar Empresa";
             this.gbContacto.ResumeLayout(false);
             this.gbContacto.PerformLayout();

@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Roles
+namespace PalcoNet.Canje_Puntos
 {
-    public partial class Roles : Form
+    public partial class Bases : Form
     {
-        public Roles()
+        public Bases()
         {
             InitializeComponent();
         }
 
-        private void Roles_Load(object sender, EventArgs e)
+        private void label13_Click(object sender, EventArgs e)
         {
 
         }

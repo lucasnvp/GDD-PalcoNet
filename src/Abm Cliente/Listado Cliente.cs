@@ -10,14 +10,19 @@ using System.Windows.Forms;
 
 namespace PalcoNet.Abm_Cliente
 {
-    public partial class Listado : Form
+    public partial class ListadoClientes : Form
     {
-        public Listado()
+        public ListadoClientes()
         {
             InitializeComponent();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ListadoClientes_Load(object sender, EventArgs e)
         {
 
         }

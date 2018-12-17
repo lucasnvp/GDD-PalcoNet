@@ -30,16 +30,16 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtContraseña = new System.Windows.Forms.TextBox();
-            this.Apellido = new System.Windows.Forms.Label();
+            this.cmbRol = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnEmpresa = new System.Windows.Forms.Button();
+            this.btnCliente = new System.Windows.Forms.Button();
             this.txtReescriba = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnCliente = new System.Windows.Forms.Button();
-            this.btnEmpresa = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbRol = new System.Windows.Forms.ComboBox();
+            this.txtContraseña = new System.Windows.Forms.TextBox();
+            this.Apellido = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -76,41 +76,46 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Complete los campos";
             // 
-            // label2
+            // cmbRol
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(150, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 25);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Username";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.cmbRol.FormattingEnabled = true;
+            this.cmbRol.Location = new System.Drawing.Point(262, 164);
+            this.cmbRol.Name = "cmbRol";
+            this.cmbRol.Size = new System.Drawing.Size(121, 28);
+            this.cmbRol.TabIndex = 9;
             // 
-            // txtUsername
+            // label3
             // 
-            this.txtUsername.Location = new System.Drawing.Point(262, 41);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(119, 26);
-            this.txtUsername.TabIndex = 1;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(127, 168);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 25);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Rol asignado";
             // 
-            // txtContraseña
+            // btnEmpresa
             // 
-            this.txtContraseña.Location = new System.Drawing.Point(262, 81);
-            this.txtContraseña.Name = "txtContraseña";
-            this.txtContraseña.Size = new System.Drawing.Size(119, 26);
-            this.txtContraseña.TabIndex = 3;
+            this.btnEmpresa.AutoSize = true;
+            this.btnEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmpresa.Location = new System.Drawing.Point(420, 126);
+            this.btnEmpresa.Name = "btnEmpresa";
+            this.btnEmpresa.Size = new System.Drawing.Size(90, 30);
+            this.btnEmpresa.TabIndex = 7;
+            this.btnEmpresa.Text = "Empresa";
+            this.btnEmpresa.UseVisualStyleBackColor = true;
             // 
-            // Apellido
+            // btnCliente
             // 
-            this.Apellido.AutoSize = true;
-            this.Apellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Apellido.Location = new System.Drawing.Point(138, 82);
-            this.Apellido.Name = "Apellido";
-            this.Apellido.Size = new System.Drawing.Size(114, 25);
-            this.Apellido.TabIndex = 2;
-            this.Apellido.Text = "Contraseña";
-            this.Apellido.Click += new System.EventHandler(this.label3_Click);
+            this.btnCliente.AutoSize = true;
+            this.btnCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCliente.Location = new System.Drawing.Point(420, 77);
+            this.btnCliente.Name = "btnCliente";
+            this.btnCliente.Size = new System.Drawing.Size(90, 30);
+            this.btnCliente.TabIndex = 6;
+            this.btnCliente.Text = "Cliente";
+            this.btnCliente.UseVisualStyleBackColor = true;
+            this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
             // 
             // txtReescriba
             // 
@@ -130,45 +135,41 @@
             this.label4.Text = "Reescriba la contraseña";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // btnCliente
+            // txtContraseña
             // 
-            this.btnCliente.AutoSize = true;
-            this.btnCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCliente.Location = new System.Drawing.Point(420, 77);
-            this.btnCliente.Name = "btnCliente";
-            this.btnCliente.Size = new System.Drawing.Size(90, 30);
-            this.btnCliente.TabIndex = 6;
-            this.btnCliente.Text = "Cliente";
-            this.btnCliente.UseVisualStyleBackColor = true;
+            this.txtContraseña.Location = new System.Drawing.Point(262, 81);
+            this.txtContraseña.Name = "txtContraseña";
+            this.txtContraseña.Size = new System.Drawing.Size(119, 26);
+            this.txtContraseña.TabIndex = 3;
             // 
-            // btnEmpresa
+            // Apellido
             // 
-            this.btnEmpresa.AutoSize = true;
-            this.btnEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmpresa.Location = new System.Drawing.Point(420, 126);
-            this.btnEmpresa.Name = "btnEmpresa";
-            this.btnEmpresa.Size = new System.Drawing.Size(90, 30);
-            this.btnEmpresa.TabIndex = 7;
-            this.btnEmpresa.Text = "Empresa";
-            this.btnEmpresa.UseVisualStyleBackColor = true;
+            this.Apellido.AutoSize = true;
+            this.Apellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Apellido.Location = new System.Drawing.Point(138, 82);
+            this.Apellido.Name = "Apellido";
+            this.Apellido.Size = new System.Drawing.Size(114, 25);
+            this.Apellido.TabIndex = 2;
+            this.Apellido.Text = "Contraseña";
+            this.Apellido.Click += new System.EventHandler(this.label3_Click);
             // 
-            // label3
+            // txtUsername
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(127, 168);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 25);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Rol asignado";
+            this.txtUsername.Location = new System.Drawing.Point(262, 41);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(119, 26);
+            this.txtUsername.TabIndex = 1;
             // 
-            // cmbRol
+            // label2
             // 
-            this.cmbRol.FormattingEnabled = true;
-            this.cmbRol.Location = new System.Drawing.Point(262, 164);
-            this.cmbRol.Name = "cmbRol";
-            this.cmbRol.Size = new System.Drawing.Size(121, 28);
-            this.cmbRol.TabIndex = 9;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(150, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(102, 25);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Username";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // btnAceptar
             // 

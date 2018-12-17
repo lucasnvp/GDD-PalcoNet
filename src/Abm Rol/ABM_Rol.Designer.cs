@@ -1,6 +1,6 @@
 ﻿namespace PalcoNet.Abm_Rol
 {
-    partial class Rol
+    partial class AbmRol
     {
         /// <summary>
         /// Required designer variable.
@@ -199,7 +199,7 @@
             this.Btn_Buscar.UseVisualStyleBackColor = true;
             this.Btn_Buscar.Click += new System.EventHandler(this.Btn_Buscar_Click);
             // 
-            // Rol
+            // AbmRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -210,7 +210,7 @@
             this.Controls.Add(this.Btn_Buscar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.DGV_Roles);
-            this.Name = "Rol";
+            this.Name = "AbmRol";
             this.Text = "ABM_Rol";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

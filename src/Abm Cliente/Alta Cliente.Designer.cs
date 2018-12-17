@@ -1,6 +1,6 @@
 ﻿namespace PalcoNet.Abm_Cliente
 {
-    partial class Alta
+    partial class AltaClientes
     {
         /// <summary>
         /// Required designer variable.
@@ -411,7 +411,7 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             // 
-            // Alta
+            // AltaClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -423,7 +423,7 @@
             this.Controls.Add(this.gbDatos);
             this.Controls.Add(this.lblNuevoCliente);
             this.Controls.Add(this.lblAltaDeCliente);
-            this.Name = "Alta";
+            this.Name = "AltaClientes";
             this.Text = "Alta Clientes";
             this.Load += new System.EventHandler(this.Alta_Load);
             this.gbDatos.ResumeLayout(false);

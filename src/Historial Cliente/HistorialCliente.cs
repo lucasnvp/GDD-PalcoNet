@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Roles
+namespace PalcoNet.Historial_Cliente
 {
-    public partial class Roles : Form
+    public partial class HistorialCliente : Form
     {
-        public Roles()
+        public HistorialCliente()
         {
             InitializeComponent();
-        }
-
-        private void Roles_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

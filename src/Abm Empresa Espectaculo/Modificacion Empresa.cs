@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PalcoNet.Abm_Empresa_Espectaculo
 {
-    public partial class Modificacion : Form
+    public partial class ModificacionEmpresa : Form
     {
-        public Modificacion()
+        public ModificacionEmpresa()
         {
             InitializeComponent();
         }

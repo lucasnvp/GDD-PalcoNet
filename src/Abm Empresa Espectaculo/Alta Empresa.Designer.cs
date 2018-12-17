@@ -1,6 +1,6 @@
 ﻿namespace PalcoNet.Abm_Empresa_Espectaculo
 {
-    partial class Alta
+    partial class AltaEmpresa
     {
         /// <summary>
         /// Required designer variable.
@@ -299,7 +299,7 @@
             this.label4.TabIndex = 78;
             this.label4.Text = "Mail";
             // 
-            // Alta
+            // AltaEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -310,7 +310,7 @@
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.gbDatos);
             this.Controls.Add(this.lblNuevoEmpresa);
-            this.Name = "Alta";
+            this.Name = "AltaEmpresa";
             this.Text = "Alta Empresa";
             this.gbDatos.ResumeLayout(false);
             this.gbDatos.PerformLayout();

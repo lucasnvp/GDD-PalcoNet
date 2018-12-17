@@ -81,6 +81,7 @@
             this.Btn_Cancelar.TabIndex = 7;
             this.Btn_Cancelar.Text = "Cancelar";
             this.Btn_Cancelar.UseVisualStyleBackColor = true;
+            this.Btn_Cancelar.Click += new System.EventHandler(this.Btn_Cancelar_Click);
             // 
             // Btn_Aceptar
             // 
@@ -91,6 +92,7 @@
             this.Btn_Aceptar.TabIndex = 6;
             this.Btn_Aceptar.Text = "Aceptar";
             this.Btn_Aceptar.UseVisualStyleBackColor = true;
+            this.Btn_Aceptar.Click += new System.EventHandler(this.Btn_Aceptar_Click);
             // 
             // Login
             // 

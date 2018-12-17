@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registro de Usuario\AltaCliente.cs" />
     <Compile Include="Registro de Usuario\Registro de Usuario.cs">
       <SubType>Form</SubType>
     </Compile>

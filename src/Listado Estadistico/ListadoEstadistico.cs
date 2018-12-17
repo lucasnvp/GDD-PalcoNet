@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Roles
+namespace PalcoNet.Listado_Estadistico
 {
-    public partial class Roles : Form
+    public partial class ListadoEstadistico : Form
     {
-        public Roles()
+        public ListadoEstadistico()
         {
             InitializeComponent();
-        }
-
-        private void Roles_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

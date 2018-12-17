@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PalcoNet.Abm_Rol
 {
-    public partial class Rol : Form
+    public partial class AbmRol : Form
     {
-        public Rol()
+        public AbmRol()
         {
             InitializeComponent();
         }

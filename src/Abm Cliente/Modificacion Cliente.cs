@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PalcoNet.Abm_Cliente
 {
-    public partial class Modificacion : Form
+    public partial class ModificacionCliente : Form
     {
-        public Modificacion()
+        public ModificacionCliente()
         {
             InitializeComponent();
         }

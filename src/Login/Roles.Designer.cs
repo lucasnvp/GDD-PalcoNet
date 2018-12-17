@@ -1,4 +1,4 @@
-﻿namespace PalcoNet.Login
+﻿namespace PalcoNet.Roles
 {
     partial class Roles
     {
@@ -73,6 +73,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Roles";
             this.Text = "Roles";
+            this.Load += new System.EventHandler(this.Roles_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,6 +1,6 @@
 ﻿namespace PalcoNet.Abm_Empresa_Espectaculo
 {
-    partial class Listado_Empresa
+    partial class ListadoEmpresa
     {
         /// <summary>
         /// Required designer variable.
@@ -32,6 +32,8 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gD2C2018DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gD2C2018DataSet = new PalcoNet.GD2C2018DataSet();
             this.lblBusqueda = new System.Windows.Forms.Label();
             this.gbDatos = new System.Windows.Forms.GroupBox();
             this.txtMail = new System.Windows.Forms.TextBox();
@@ -40,12 +42,10 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.gD2C2018DataSet = new PalcoNet.GD2C2018DataSet();
-            this.gD2C2018DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.gbDatos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSet)).BeginInit();
+            this.gbDatos.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLimpiar
@@ -77,6 +77,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(835, 324);
             this.dataGridView1.TabIndex = 65;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // gD2C2018DataSetBindingSource
+            // 
+            this.gD2C2018DataSetBindingSource.DataSource = this.gD2C2018DataSet;
+            this.gD2C2018DataSetBindingSource.Position = 0;
+            // 
+            // gD2C2018DataSet
+            // 
+            this.gD2C2018DataSet.DataSetName = "GD2C2018DataSet";
+            this.gD2C2018DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lblBusqueda
             // 
@@ -152,17 +162,7 @@
             this.lblNombre.TabIndex = 26;
             this.lblNombre.Text = "CUIT";
             // 
-            // gD2C2018DataSet
-            // 
-            this.gD2C2018DataSet.DataSetName = "GD2C2018DataSet";
-            this.gD2C2018DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // gD2C2018DataSetBindingSource
-            // 
-            this.gD2C2018DataSetBindingSource.DataSource = this.gD2C2018DataSet;
-            this.gD2C2018DataSetBindingSource.Position = 0;
-            // 
-            // Listado_Empresa
+            // ListadoEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -172,13 +172,13 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblBusqueda);
             this.Controls.Add(this.gbDatos);
-            this.Name = "Listado_Empresa";
+            this.Name = "ListadoEmpresa";
             this.Text = "Listado de Empresas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSet)).EndInit();
             this.gbDatos.ResumeLayout(false);
             this.gbDatos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

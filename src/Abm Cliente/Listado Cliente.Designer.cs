@@ -1,6 +1,6 @@
 ﻿namespace PalcoNet.Abm_Cliente
 {
-    partial class Listado
+    partial class ListadoClientes
     {
         /// <summary>
         /// Required designer variable.
@@ -183,7 +183,7 @@
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
             // 
-            // Listado
+            // ListadoClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -193,8 +193,9 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblBusqueda);
             this.Controls.Add(this.gbDatos);
-            this.Name = "Listado";
+            this.Name = "ListadoClientes";
             this.Text = "Listado de Clientes";
+            this.Load += new System.EventHandler(this.ListadoClientes_Load);
             this.gbDatos.ResumeLayout(false);
             this.gbDatos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

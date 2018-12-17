@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Roles
+namespace PalcoNet.Canje_Puntos
 {
-    public partial class Roles : Form
+    public partial class CanjePuntos : Form
     {
-        public Roles()
+        public CanjePuntos()
         {
             InitializeComponent();
-        }
-
-        private void Roles_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
