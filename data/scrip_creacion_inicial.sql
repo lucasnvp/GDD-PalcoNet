@@ -13,16 +13,8 @@ CREATE TABLE [GEDIENTOS].[Usuario](
 )
 GO
 
--- 2 Tabla de Asignaciones de Roles y Usuarios cada usuario puede tener mas de un rol
-IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Asignacion_Rol') DROP TABLE [GEDIENTOS].[Asignacion_Rol]
-CREATE TABLE [GEDIENTOS].[Asignacion_Rol](
-  Asignacion_Rol_Id INT,
-  Asignacion_Rol_Usuario_Id INT
-  --PRIMARY KEY (Id_Rol,Id_Usuario)
-)
-GO
-
--- 3 Tabla de Roles de Usuario
+-- 2 Tabla de Roles de Usuario
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Rol') DROP TABLE [GEDIENTOS].[Rol]
 CREATE TABLE [GEDIENTOS].[Rol](
   Rol_Id INT PRIMARY KEY IDENTITY(1,1),
   Rol_Nombre VARCHAR(255),
@@ -30,7 +22,16 @@ CREATE TABLE [GEDIENTOS].[Rol](
 )
 GO
 
+-- 3 Tabla de Asignaciones de Roles y Usuarios cada usuario puede tener mas de un rol
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Asignacion_Rol') DROP TABLE [GEDIENTOS].[Asignacion_Rol]
+CREATE TABLE [GEDIENTOS].[Asignacion_Rol](
+  Asignacion_Rol_Id INT ,
+  Asignacion_Rol_Usuario_Id INT
+)
+GO
+
 -- 4 Tabla de Funcionalidades
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Funcionalidad') DROP TABLE [GEDIENTOS].[Funcionalidad]
 CREATE TABLE [GEDIENTOS].[Funcionalidad](
   Funcionalidad_Id INT PRIMARY KEY IDENTITY(1,1),
   Funcionalidad_Descripcion VARCHAR(255)
@@ -38,14 +39,15 @@ CREATE TABLE [GEDIENTOS].[Funcionalidad](
 GO
 
 -- 5 Creamos la tabla de roles por funcionalidad, cada rol puede tener muchas funcionalidades y una funcionalidad puede estar presente en varios roles.
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Rol_X_Funcionalidad') DROP TABLE [GEDIENTOS].[Rol_X_Funcionalidad]
 CREATE TABLE [GEDIENTOS].[Rol_X_Funcionalidad](
   Funcionalidad_Id INT,
   Rol_Id INT
-  --PRIMARY KEY (Id_Funcionalidad,Id_Rol)
 )
 GO
 
 -- 6 Tabla Clientes
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Cliente') DROP TABLE [GEDIENTOS].[Cliente]
 CREATE TABLE [GEDIENTOS].[Cliente](
   Cliente_Id INT PRIMARY KEY IDENTITY(1,1),
   Cliente_Usuario_Id INT ,
@@ -59,7 +61,6 @@ CREATE TABLE [GEDIENTOS].[Cliente](
   Cliente_Nro_Piso NUMERIC (18),
   Cliente_Dpto VARCHAR (255),
   Cliente_Codigo_Postal VARCHAR (255),
-
   Cliente_Tipo_DNI VARCHAR(4),
   Cliente_CUIL NUMERIC(25),
   Cliente_Telefono NUMERIC (18),
@@ -70,8 +71,9 @@ CREATE TABLE [GEDIENTOS].[Cliente](
 GO
 
 -- 7 Tabla Tajetas de Credito
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Tarjeta_Credito') DROP TABLE [GEDIENTOS].[Tarjeta_Credito]
 CREATE TABLE [GEDIENTOS].[Tarjeta_Credito](
-  Tarjeta_Credito_Id INT,
+  Tarjeta_Credito_Cliente_Id INT ,
   Tarjeta_Credito_Nro NUMERIC (30)
 )
 GO 
@@ -97,6 +99,7 @@ CREATE TABLE [GEDIENTOS].[Empresa](
 GO 
 
 -- 9 Tabla Rubro
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Rubro') DROP TABLE [GEDIENTOS].[Rubro]
 CREATE TABLE [GEDIENTOS].[Rubro](
   Rubro_Id INT PRIMARY KEY IDENTITY(1,1),
   Rubro_Descripcion VARCHAR (255)
@@ -104,6 +107,7 @@ CREATE TABLE [GEDIENTOS].[Rubro](
 GO
 
 -- 10 Tabla Precio por Grado
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Precio_Grado') DROP TABLE [GEDIENTOS].[Precio_Grado]
 CREATE TABLE [GEDIENTOS].[Precio_Grado](
   Precio_Grado_Id INT PRIMARY KEY,
   Precio_Grado_Descripcion VARCHAR (255),
@@ -112,6 +116,7 @@ CREATE TABLE [GEDIENTOS].[Precio_Grado](
 GO
 
 -- 11 Tabla Estados de Publicaciones
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Estado_Publicacion') DROP TABLE [GEDIENTOS].[Estado_Publicacion]
 CREATE TABLE [GEDIENTOS].[Estado_Publicacion](
   Estado_Publicacion_Id INT PRIMARY KEY IDENTITY(1,1),
   Estado_Publicacion_Descripcion VARCHAR (255)
@@ -132,6 +137,7 @@ CREATE TABLE [GEDIENTOS].[Ubicacion](
 GO
 
 -- 13 Tabla Espectaculos
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Espectaculo') DROP TABLE [GEDIENTOS].[Espectaculo]
 CREATE TABLE [GEDIENTOS].[Espectaculo](
   Espectaculo_Id INT PRIMARY KEY IDENTITY(1,1) ,
   Espectaculo_Empresa_Id INT,
@@ -158,6 +164,7 @@ CREATE TABLE [GEDIENTOS].[Compra](
   Compra_Factura_Id INT ,
   Compra_Espectaculo_Id INT ,
   Compra_Ubicacion_Id INT ,
+  Compra_Forma_De_Pago_Id Int ,
   Compra_Fecha_Compra DATE ,
   Compra_Cantidad NUMERIC (18)
 )
@@ -166,7 +173,7 @@ GO
 -- 15 Tabla Factura
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Factura') DROP TABLE [GEDIENTOS].[Factura]
 CREATE TABLE [GEDIENTOS].[Factura](
-  Factura_Id INT PRIMARY KEY IDENTITY(1,1),
+  Factura_Id INT PRIMARY KEY IDENTITY(1,1) ,
   Factura_Empresa_Id INT ,
   Factura_Nro NUMERIC (18, 0) ,
   Factura_Fecha DATETIME ,
@@ -186,6 +193,7 @@ CREATE TABLE [GEDIENTOS].[Item_Factura](
 GO
 
 -- 17 Tabla Forma de pago
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Forma_De_Pago') DROP TABLE [GEDIENTOS].[Forma_De_Pago]
 CREATE TABLE [GEDIENTOS].[Forma_De_Pago](
   Forma_De_Pago_Id INT PRIMARY KEY IDENTITY(1,1),
   Forma_De_Pago_Descripcion VARCHAR (255) ,
@@ -314,8 +322,8 @@ JOIN GEDIENTOS.Espectaculo Esp
 ON Esp.Espectaculo_Codigo = Maestra.Espectaculo_Cod
 WHERE Ubicacion_Tipo_Codigo IS NOT NULL
 
-INSERT INTO GEDIENTOS.Compra (Compra_Cliente_Id, Compra_Factura_Id, Compra_Espectaculo_Id, Compra_Ubicacion_Id, Compra_Fecha_Compra, Compra_Cantidad)
-SELECT DISTINCT Cli.Cliente_Id, isnull(Fac.Factura_Id,0), Esp.Espectaculo_Id, Ubi.Ubicacion_Id, Maestra.Compra_Fecha, Maestra.Compra_Cantidad
+INSERT INTO GEDIENTOS.Compra (Compra_Cliente_Id, Compra_Factura_Id, Compra_Espectaculo_Id, Compra_Ubicacion_Id, Compra_Fecha_Compra, Compra_Cantidad, Compra_Forma_De_Pago_Id)
+SELECT DISTINCT Cli.Cliente_Id, Fac.Factura_Id, Esp.Espectaculo_Id, Ubi.Ubicacion_Id, Maestra.Compra_Fecha, Maestra.Compra_Cantidad, 1
 FROM gd_esquema.Maestra Maestra 
 LEFT JOIN GEDIENTOS.Factura Fac
 	ON Fac.Factura_Nro = Maestra.Factura_Nro
@@ -347,3 +355,23 @@ JOIN GEDIENTOS.Compra Com
 	AND Com.Compra_Ubicacion_Id = Ubi.Ubicacion_Id
 WHERE Maestra.Factura_Nro IS NOT NULL
 GO
+
+-- Creo las FK
+ALTER TABLE GEDIENTOS.Asignacion_Rol ADD CONSTRAINT FK_Usuario_Asignacion_Rol FOREIGN KEY (Asignacion_Rol_Id) REFERENCES GEDIENTOS.Usuario(Usuario_Id);
+ALTER TABLE GEDIENTOS.Asignacion_Rol ADD CONSTRAINT FK_Rol_Asignacion_Rol FOREIGN KEY (Asignacion_Rol_Id) REFERENCES GEDIENTOS.Rol(Rol_Id);
+ALTER TABLE GEDIENTOS.Rol_X_Funcionalidad ADD CONSTRAINT FK_Funcionalidad_Rol_X_Funcionalidad FOREIGN KEY (Funcionalidad_Id) REFERENCES GEDIENTOS.Funcionalidad(Funcionalidad_Id);
+ALTER TABLE GEDIENTOS.Rol_X_Funcionalidad ADD CONSTRAINT FK_Rol_Rol_X_Funcionalidad FOREIGN KEY (Rol_Id) REFERENCES GEDIENTOS.Rol(Rol_Id);
+ALTER TABLE GEDIENTOS.Tarjeta_Credito ADD CONSTRAINT FK_Cliente_Tarjeta_Credito FOREIGN KEY (Tarjeta_Credito_Cliente_Id) REFERENCES GEDIENTOS.Cliente(Cliente_Id);
+ALTER TABLE GEDIENTOS.Cliente ADD CONSTRAINT FK_Usuario_Cliente FOREIGN KEY (Cliente_Usuario_Id) REFERENCES GEDIENTOS.Usuario(Usuario_Id);
+ALTER TABLE GEDIENTOS.Empresa ADD CONSTRAINT FK_Usuario_Empresa FOREIGN KEY (Empresa_Usuario_Id) REFERENCES GEDIENTOS.Usuario(Usuario_Id);
+ALTER TABLE GEDIENTOS.Compra ADD CONSTRAINT FK_Forma_De_Pago_Compra FOREIGN KEY (Compra_Forma_De_Pago_Id) REFERENCES GEDIENTOS.Forma_De_Pago(Forma_De_Pago_Id);
+ALTER TABLE GEDIENTOS.Compra ADD CONSTRAINT FK_Factura_Compra FOREIGN KEY (Compra_Factura_Id) REFERENCES GEDIENTOS.Factura(Factura_Id);
+ALTER TABLE GEDIENTOS.Item_Factura ADD CONSTRAINT FK_Factura_Item_Factura FOREIGN KEY (Factura_Id) REFERENCES GEDIENTOS.Factura(Factura_Id);
+ALTER TABLE GEDIENTOS.Compra ADD CONSTRAINT FK_Ubicacion_Compra FOREIGN KEY (Compra_Ubicacion_Id) REFERENCES GEDIENTOS.Ubicacion(Ubicacion_Id);
+ALTER TABLE GEDIENTOS.Item_Factura ADD CONSTRAINT FK_Compra_Item_Factura FOREIGN KEY (Item_Factura_Compra_Id) REFERENCES GEDIENTOS.Compra(Compra_Id);
+ALTER TABLE GEDIENTOS.Ubicacion ADD CONSTRAINT FK_Tipo_De_Ubicacion FOREIGN KEY (Ubicacion_Tipo_Descripcion_Id) REFERENCES GEDIENTOS.Tipo_De_Ubicacion(Tipo_De_Ubicacion_Id);
+ALTER TABLE GEDIENTOS.Ubicacion ADD CONSTRAINT FK_Espectaculo_Ubicacion FOREIGN KEY (Ubicacion_Espectaculo_Id) REFERENCES GEDIENTOS.Espectaculo(Espectaculo_Id);
+ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Estado_Publicacion_Espectaculo FOREIGN KEY (Espectaculo_Estado_Publicacion_Id) REFERENCES GEDIENTOS.Estado_Publicacion(Estado_Publicacion_Id);
+ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Precio_Grado_Espectaculo FOREIGN KEY (Espectaculo_Precio_Grado_Id) REFERENCES GEDIENTOS.Precio_Grado(Precio_Grado_Id);
+ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Rubro_Espectaculo FOREIGN KEY (Espectaculo_Rubro_Id) REFERENCES GEDIENTOS.Rubro(Rubro_Id);
+ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Empresa_Espectaculo FOREIGN KEY (Espectaculo_Empresa_Id) REFERENCES GEDIENTOS.Empresa(Empresa_Id);
