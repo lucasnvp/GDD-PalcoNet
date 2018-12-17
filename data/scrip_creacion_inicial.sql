@@ -9,7 +9,9 @@ IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Usuario') DROP TABLE [GEDIENT
 CREATE TABLE [GEDIENTOS].[Usuario](
   Usuario_Id INT PRIMARY KEY IDENTITY(1,1) ,
   Usuario_Username VARCHAR(255) ,
-  Usuario_Password VARCHAR(255)
+  Usuario_Password VARCHAR(255) ,
+  Usuario_Activo BIT NOT NULL DEFAULT 1, -- 1 Activo 0 Desactivo
+  Usuario_Intentos NUMERIC(1,0)
 )
 GO
 
@@ -18,7 +20,7 @@ IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Rol') DROP TABLE [GEDIENTOS].
 CREATE TABLE [GEDIENTOS].[Rol](
   Rol_Id INT PRIMARY KEY IDENTITY(1,1),
   Rol_Nombre VARCHAR(255),
-  Rol_Activo BIT
+  Rol_Activo BIT NOT NULL DEFAULT 1 -- 1 Activo 0 Desactivo
 )
 GO
 
@@ -375,3 +377,9 @@ ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Estado_Publicacion_Espectacu
 ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Precio_Grado_Espectaculo FOREIGN KEY (Espectaculo_Precio_Grado_Id) REFERENCES GEDIENTOS.Precio_Grado(Precio_Grado_Id);
 ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Rubro_Espectaculo FOREIGN KEY (Espectaculo_Rubro_Id) REFERENCES GEDIENTOS.Rubro(Rubro_Id);
 ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Empresa_Espectaculo FOREIGN KEY (Espectaculo_Empresa_Id) REFERENCES GEDIENTOS.Empresa(Empresa_Id);
+
+-- Comienzo de la carga inicial de datos
+-- Roles
+INSERT INTO GEDIENTOS.Rol(Rol_Nombre) VALUES ('Empresa')
+INSERT INTO GEDIENTOS.Rol(Rol_Nombre) VALUES ('Administrativo')
+INSERT INTO GEDIENTOS.Rol(Rol_Nombre) VALUES ('Cliente')
