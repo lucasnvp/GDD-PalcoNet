@@ -30,6 +30,7 @@
         {
             this.Btn_Salir = new System.Windows.Forms.Button();
             this.Btn_ABM_Rol = new System.Windows.Forms.Button();
+            this.Btn_Registro_De_Usuario = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Btn_Salir
@@ -52,11 +53,22 @@
             this.Btn_ABM_Rol.UseVisualStyleBackColor = true;
             this.Btn_ABM_Rol.Click += new System.EventHandler(this.Btn_ABM_Rol_Click);
             // 
+            // Btn_Registro_De_Usuario
+            // 
+            this.Btn_Registro_De_Usuario.Location = new System.Drawing.Point(126, 12);
+            this.Btn_Registro_De_Usuario.Name = "Btn_Registro_De_Usuario";
+            this.Btn_Registro_De_Usuario.Size = new System.Drawing.Size(108, 37);
+            this.Btn_Registro_De_Usuario.TabIndex = 7;
+            this.Btn_Registro_De_Usuario.Text = "Registro De Usuario";
+            this.Btn_Registro_De_Usuario.UseVisualStyleBackColor = true;
+            this.Btn_Registro_De_Usuario.Click += new System.EventHandler(this.Btn_Registro_De_Usuario_Click);
+            // 
             // MenuInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(649, 261);
+            this.Controls.Add(this.Btn_Registro_De_Usuario);
             this.Controls.Add(this.Btn_ABM_Rol);
             this.Controls.Add(this.Btn_Salir);
             this.Name = "MenuInicial";
@@ -69,5 +81,6 @@
 
         private System.Windows.Forms.Button Btn_Salir;
         private System.Windows.Forms.Button Btn_ABM_Rol;
+        private System.Windows.Forms.Button Btn_Registro_De_Usuario;
     }
 }

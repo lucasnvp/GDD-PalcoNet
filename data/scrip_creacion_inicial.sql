@@ -562,6 +562,7 @@ GO
 
 -- Funcionalidades
 INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_ABM_Rol')
+INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_Registro_De_Usuario')
 GO
 
 -- Asigno los roles a los usuarios
@@ -572,3 +573,5 @@ GO
 
 -- Agrego las funciones por rol
 EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_ABM_Rol',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_Registro_De_Usuario',1
+GO

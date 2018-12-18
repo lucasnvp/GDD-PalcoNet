@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PalcoNet.Abm_Rol;
+using PalcoNet.Registro_de_Usuario;
 
 namespace PalcoNet.Menu
 {
@@ -53,6 +54,12 @@ namespace PalcoNet.Menu
         {
             AbmRol rol = new AbmRol();
             rol.ShowDialog();
+        }
+
+        private void Btn_Registro_De_Usuario_Click(object sender, EventArgs e)
+        {
+            RegistroDeUsuario registroDeUsuario = new RegistroDeUsuario();
+            registroDeUsuario.ShowDialog();
         }
 
     }
