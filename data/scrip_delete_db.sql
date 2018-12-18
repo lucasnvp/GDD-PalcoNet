@@ -1,5 +1,14 @@
 USE [GD2C2018]
 
+IF EXISTS (SELECT * FROM sys.objects where name = 'SP_Get_Usuario') DROP PROCEDURE GEDIENTOS.SP_Get_Usuario;
+IF EXISTS (SELECT * FROM sys.objects where name = 'SP_Update_Funionalidad_Por_Rol') DROP PROCEDURE GEDIENTOS.SP_Update_Funionalidad_Por_Rol;
+IF EXISTS (SELECT * FROM sys.objects where name = 'SP_Get_Usuario_Rol') DROP PROCEDURE GEDIENTOS.SP_Get_Usuario_Rol;
+IF EXISTS (SELECT * FROM sys.objects where name = 'SP_Get_Funcionalidades') DROP PROCEDURE GEDIENTOS.SP_Get_Funcionalidades;
+IF EXISTS (SELECT * FROM sys.objects where name = 'SP_Get_Roles') DROP PROCEDURE GEDIENTOS.SP_Get_Roles;
+IF EXISTS (SELECT * FROM sys.objects where name = 'SP_Create_Rol') DROP PROCEDURE GEDIENTOS.SP_Create_Rol;
+IF EXISTS (SELECT * FROM sys.objects where name = 'SP_Get_Funcionalidades_Rol') DROP PROCEDURE GEDIENTOS.SP_Get_Funcionalidades_Rol;
+IF EXISTS (SELECT * FROM sys.objects where name = 'SP_Update_Rol') DROP PROCEDURE GEDIENTOS.SP_Update_Rol;
+
 IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Usuario_Asignacion_Rol') ALTER TABLE GEDIENTOS.Asignacion_Rol DROP CONSTRAINT FK_Usuario_Asignacion_Rol;
 IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Rol_Asignacion_Rol') ALTER TABLE GEDIENTOS.Asignacion_Rol DROP CONSTRAINT FK_Rol_Asignacion_Rol;
 IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Funcionalidad_Rol_X_Funcionalidad') ALTER TABLE GEDIENTOS.Rol_X_Funcionalidad DROP CONSTRAINT FK_Funcionalidad_Rol_X_Funcionalidad;

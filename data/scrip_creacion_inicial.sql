@@ -4,14 +4,19 @@ GO
 CREATE SCHEMA [GEDIENTOS]
 GO
 
+/*******************************************
+*	Comienzo de la creacion de tablas
+*******************************************/
+
 -- 1 Tabla de usuarios.
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Usuario') DROP TABLE [GEDIENTOS].[Usuario]
 CREATE TABLE [GEDIENTOS].[Usuario](
   Usuario_Id INT PRIMARY KEY IDENTITY(1,1) ,
   Usuario_Username VARCHAR(255) ,
   Usuario_Password VARCHAR(255) ,
+  Fecha_Creacion DATETIME DEFAULT CURRENT_TIMESTAMP ,
   Usuario_Activo BIT NOT NULL DEFAULT 1, -- 1 Activo 0 Desactivo
-  Usuario_Intentos NUMERIC(1,0)
+  Usuario_Intentos NUMERIC(1,0) NOT NULL DEFAULT 0
 )
 GO
 
@@ -28,7 +33,8 @@ GO
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Asignacion_Rol') DROP TABLE [GEDIENTOS].[Asignacion_Rol]
 CREATE TABLE [GEDIENTOS].[Asignacion_Rol](
   Asignacion_Rol_Id INT ,
-  Asignacion_Rol_Usuario_Id INT
+  Asignacion_Rol_Usuario_Id INT ,
+  Asignacion_Rol_Activo BIT -- 1 Activo 0 Desactivo
 )
 GO
 
@@ -43,8 +49,9 @@ GO
 -- 5 Creamos la tabla de roles por funcionalidad, cada rol puede tener muchas funcionalidades y una funcionalidad puede estar presente en varios roles.
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Rol_X_Funcionalidad') DROP TABLE [GEDIENTOS].[Rol_X_Funcionalidad]
 CREATE TABLE [GEDIENTOS].[Rol_X_Funcionalidad](
-  Funcionalidad_Id INT,
-  Rol_Id INT
+  Funcionalidad_Id INT ,
+  Rol_Id INT ,
+  Activo BIT NOT NULL
 )
 GO
 
@@ -211,7 +218,10 @@ CREATE TABLE [GEDIENTOS].[Tipo_De_Ubicacion](
 )
 GO
 
--- Comienzo de la migracion
+/*******************************************
+*	Comienzo de la migracion
+*******************************************/
+
 -- Empresas
 INSERT INTO GEDIENTOS.Empresa (
 	Empresa_Razon_Social, 
@@ -358,8 +368,11 @@ JOIN GEDIENTOS.Compra Com
 WHERE Maestra.Factura_Nro IS NOT NULL
 GO
 
--- Creo las FK
-ALTER TABLE GEDIENTOS.Asignacion_Rol ADD CONSTRAINT FK_Usuario_Asignacion_Rol FOREIGN KEY (Asignacion_Rol_Id) REFERENCES GEDIENTOS.Usuario(Usuario_Id);
+/*******************************************
+*	Creo las FK
+*******************************************/
+
+ALTER TABLE GEDIENTOS.Asignacion_Rol ADD CONSTRAINT FK_Usuario_Asignacion_Rol FOREIGN KEY (Asignacion_Rol_Usuario_Id) REFERENCES GEDIENTOS.Usuario(Usuario_Id);
 ALTER TABLE GEDIENTOS.Asignacion_Rol ADD CONSTRAINT FK_Rol_Asignacion_Rol FOREIGN KEY (Asignacion_Rol_Id) REFERENCES GEDIENTOS.Rol(Rol_Id);
 ALTER TABLE GEDIENTOS.Rol_X_Funcionalidad ADD CONSTRAINT FK_Funcionalidad_Rol_X_Funcionalidad FOREIGN KEY (Funcionalidad_Id) REFERENCES GEDIENTOS.Funcionalidad(Funcionalidad_Id);
 ALTER TABLE GEDIENTOS.Rol_X_Funcionalidad ADD CONSTRAINT FK_Rol_Rol_X_Funcionalidad FOREIGN KEY (Rol_Id) REFERENCES GEDIENTOS.Rol(Rol_Id);
@@ -377,9 +390,185 @@ ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Estado_Publicacion_Espectacu
 ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Precio_Grado_Espectaculo FOREIGN KEY (Espectaculo_Precio_Grado_Id) REFERENCES GEDIENTOS.Precio_Grado(Precio_Grado_Id);
 ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Rubro_Espectaculo FOREIGN KEY (Espectaculo_Rubro_Id) REFERENCES GEDIENTOS.Rubro(Rubro_Id);
 ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Empresa_Espectaculo FOREIGN KEY (Espectaculo_Empresa_Id) REFERENCES GEDIENTOS.Empresa(Empresa_Id);
+GO
 
--- Comienzo de la carga inicial de datos
+/*******************************************
+*	Creacion de SP
+*******************************************/
+
+-- SP Get Usuario
+CREATE PROCEDURE GEDIENTOS.SP_Get_Usuario
+  @usuario VARCHAR(255),
+  @password VARCHAR(255)
+AS
+  BEGIN TRY
+    DECLARE @ID_Usuario INT
+	SELECT @ID_Usuario = Usuario_Id FROM GEDIENTOS.Usuario WHERE Usuario_Username = @usuario AND Usuario_Password = @password
+    SELECT @ID_Usuario
+  END TRY
+  BEGIN CATCH
+    SELECT 'ERROR', ERROR_MESSAGE()
+  END CATCH
+GO
+
+CREATE PROCEDURE GEDIENTOS.SP_Update_Funionalidad_Por_Rol
+  @rol_nombre VARCHAR(255),
+  @funcionalidad_nombre VARCHAR(255),
+  @habilitado bit
+AS
+  BEGIN TRY
+    DECLARE @ID_Rol INT
+    DECLARE @ID_Funcionalidad INT
+    DECLARE @ID_Rol_Aux INT
+    DECLARE @ID_Funcionalidad_Aux INT
+
+	SELECT @ID_Rol = Rol_Id FROM GEDIENTOS.Rol WHERE Rol_Nombre = @rol_nombre
+	SELECT @ID_Funcionalidad = Funcionalidad_Id FROM GEDIENTOS.Funcionalidad WHERE Funcionalidad_Descripcion = @funcionalidad_nombre
+
+	SELECT @ID_Rol_Aux = Rol_Id, @ID_Funcionalidad_Aux = Funcionalidad_Id FROM GEDIENTOS.Rol_X_Funcionalidad WHERE Rol_Id = @ID_Rol AND Funcionalidad_Id = @ID_Funcionalidad
+
+    IF @ID_Rol_Aux IS NOT NULL AND @ID_Funcionalidad_Aux IS NOT NULL
+	  UPDATE GEDIENTOS.Rol_X_Funcionalidad SET Activo = @habilitado WHERE Rol_Id = @ID_Rol AND Funcionalidad_Id = @ID_Funcionalidad
+	ELSE
+	  INSERT INTO GEDIENTOS.Rol_X_Funcionalidad(Funcionalidad_Id, Rol_Id, Activo) VALUES (@ID_Funcionalidad, @ID_Rol, @habilitado)
+  END TRY
+  BEGIN CATCH
+    SELECT 'ERROR', ERROR_MESSAGE()
+  END CATCH
+GO
+
+-- SP Get Usuario Rol
+CREATE PROCEDURE GEDIENTOS.SP_Get_Usuario_Rol
+  @idUsuario INT
+AS
+  BEGIN TRY
+	SELECT Rol.Rol_Nombre, AR.Asignacion_Rol_Id
+	FROM GEDIENTOS.Asignacion_Rol AR
+	JOIN GEDIENTOS.Rol Rol
+		ON Rol.Rol_Id = AR.Asignacion_Rol_Id
+	WHERE AR.Asignacion_Rol_Usuario_Id = @idUsuario
+  END TRY
+  BEGIN CATCH
+    SELECT 'ERROR', ERROR_MESSAGE()
+  END CATCH
+GO
+
+-- SP Get Funcionalidades
+CREATE PROCEDURE GEDIENTOS.SP_Get_Funcionalidades
+AS
+  BEGIN TRY
+	SELECT Funcionalidad_Descripcion AS Funcionalidades FROM GEDIENTOS.Funcionalidad ORDER BY Funcionalidades
+  END TRY
+  BEGIN CATCH
+    SELECT 'ERROR', ERROR_MESSAGE()
+  END CATCH
+GO
+
+-- SP Get Roles
+CREATE PROCEDURE GEDIENTOS.SP_Get_Roles
+AS
+  BEGIN TRY
+	SELECT Rol_Nombre AS Rol, Rol_Activo AS Habilitado FROM GEDIENTOS.Rol
+  END TRY
+  BEGIN CATCH
+    SELECT 'ERROR', ERROR_MESSAGE()
+  END CATCH
+GO
+
+-- SP Crear Rol
+CREATE PROCEDURE GEDIENTOS.SP_Create_Rol
+  @nombre_rol VARCHAR(255),
+  @habilitado BIT
+AS
+  BEGIN TRY
+    DECLARE @nombre VARCHAR(255)
+    DECLARE @mensaje VARCHAR(255) SET @mensaje = 'El rol ya existe'
+	SELECT @nombre = Rol_Nombre FROM GEDIENTOS.Rol Where Rol_Nombre = @nombre_rol
+    IF @nombre IS NULL
+        BEGIN
+		  INSERT INTO GEDIENTOS.Rol(Rol_Nombre, Rol_Activo) VALUES (@nombre_rol, @habilitado)
+
+		  INSERT INTO GEDIENTOS.Rol_X_Funcionalidad(Funcionalidad_Id, Rol_Id, Activo)
+		  SELECT Funcionalidad_Id, Rol_Id, 0 FROM GEDIENTOS.Rol, GEDIENTOS.Funcionalidad WHERE Rol_Nombre = @nombre_rol
+        END
+    ELSE
+      SELECT @mensaje
+  END TRY
+  BEGIN CATCH
+    SELECT 'ERROR', ERROR_MESSAGE()
+  END CATCH
+GO
+
+CREATE PROCEDURE GEDIENTOS.SP_Get_Funcionalidades_Rol
+  @nombre_rol VARCHAR(255)
+AS
+  BEGIN TRY
+	SELECT Fun.Funcionalidad_Descripcion AS Funcionalidad, rxf.Activo AS Habilitado
+	FROM GEDIENTOS.Rol_X_Funcionalidad rxf
+	JOIN GEDIENTOS.Funcionalidad Fun
+		ON Fun.Funcionalidad_Id = rxf.Funcionalidad_Id
+	JOIN GEDIENTOS.Rol Rol
+		ON rxf.Rol_Id = Rol.Rol_Id
+	WHERE Rol.Rol_Nombre = @nombre_rol
+	ORDER BY Funcionalidad
+  END TRY
+  BEGIN CATCH
+    SELECT 'ERROR', ERROR_MESSAGE()
+  END CATCH
+GO
+
+-- SP Update Rol
+CREATE PROCEDURE GEDIENTOS.SP_Update_Rol
+  @nombre_rol VARCHAR(255),
+  @habilitado BIT
+AS
+  BEGIN TRY
+    DECLARE @nombre VARCHAR(255)
+    DECLARE @mensaje VARCHAR(255)
+    DECLARE @ID_Rol NUMERIC(18)
+
+	SELECT @nombre = Rol_Nombre, @ID_Rol = Rol_Id FROM GEDIENTOS.Rol WHERE Rol_Nombre = @nombre_rol
+
+    IF @nombre IS NULL
+      BEGIN
+		INSERT INTO GEDIENTOS.Rol (Rol_Nombre, Rol_Activo) VALUES (@nombre_rol, @habilitado)
+		INSERT INTO GEDIENTOS.Rol_X_Funcionalidad(Funcionalidad_Id, Rol_Id, Activo)
+		SELECT Funcionalidad_Id, Rol_Id, 0 FROM GEDIENTOS.Rol, GEDIENTOS.Funcionalidad WHERE Rol_Nombre = @nombre_rol
+      END
+    ELSE
+	  UPDATE GEDIENTOS.Rol SET Rol_Activo = @habilitado WHERE Rol_Nombre = @nombre
+    IF @habilitado = 0
+	  UPDATE GEDIENTOS.Asignacion_Rol SET Asignacion_Rol_Activo = 0 WHERE Asignacion_Rol_Id = @ID_Rol
+  END TRY
+  BEGIN CATCH
+    SELECT 'ERROR', ERROR_MESSAGE()
+  END CATCH
+ GO
+
+/*******************************************
+*	Comienzo de la carga inicial de datos
+*******************************************/
+
 -- Roles
 INSERT INTO GEDIENTOS.Rol(Rol_Nombre) VALUES ('Empresa')
 INSERT INTO GEDIENTOS.Rol(Rol_Nombre) VALUES ('Administrativo')
 INSERT INTO GEDIENTOS.Rol(Rol_Nombre) VALUES ('Cliente')
+INSERT INTO GEDIENTOS.Rol(Rol_Nombre) VALUES ('Administrador General')
+GO
+
+-- Usuarios
+INSERT INTO GEDIENTOS.Usuario(Usuario_Username, Usuario_Password) VALUES ('admin', 'e6-b8-70-50-bf-cb-81-43-fc-b8-db-01-70-a4-dc-9e-d0-0d-90-4d-dd-3e-2a-4a-d1-b1-e8-dc-0f-dc-9b-e7')
+GO
+
+-- Funcionalidades
+INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_ABM_Rol')
+GO
+
+-- Asigno los roles a los usuarios
+INSERT INTO GEDIENTOS.Asignacion_Rol(Asignacion_Rol_Id, Asignacion_Rol_Usuario_Id)
+SELECT Rol_Id, Usuario_Id FROM GEDIENTOS.Rol, GEDIENTOS.Usuario
+WHERE Rol_Nombre = 'Administrador General' AND Usuario_Username = 'admin'  
+GO
+
+-- Agrego las funciones por rol
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_ABM_Rol',1

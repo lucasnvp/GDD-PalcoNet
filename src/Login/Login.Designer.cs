@@ -1,6 +1,6 @@
 ﻿namespace PalcoNet
 {
-    partial class Login
+    partial class Cl_Login
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< Updated upstream
             this.Txt_Password = new System.Windows.Forms.TextBox();
             this.Txt_Usuario = new System.Windows.Forms.TextBox();
             this.Lbl_Password = new System.Windows.Forms.Label();
@@ -111,6 +112,86 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+=======
+            this.Txt_Password = new System.Windows.Forms.TextBox();
+            this.Txt_Usuario = new System.Windows.Forms.TextBox();
+            this.Lbl_Password = new System.Windows.Forms.Label();
+            this.Lbl_Usuario = new System.Windows.Forms.Label();
+            this.Btn_Cancelar = new System.Windows.Forms.Button();
+            this.Btn_Aceptar = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // Txt_Password
+            // 
+            this.Txt_Password.Location = new System.Drawing.Point(59, 88);
+            this.Txt_Password.Name = "Txt_Password";
+            this.Txt_Password.Size = new System.Drawing.Size(156, 20);
+            this.Txt_Password.TabIndex = 11;
+            // 
+            // Txt_Usuario
+            // 
+            this.Txt_Usuario.Location = new System.Drawing.Point(59, 49);
+            this.Txt_Usuario.Name = "Txt_Usuario";
+            this.Txt_Usuario.Size = new System.Drawing.Size(156, 20);
+            this.Txt_Usuario.TabIndex = 10;
+            // 
+            // Lbl_Password
+            // 
+            this.Lbl_Password.AutoSize = true;
+            this.Lbl_Password.Location = new System.Drawing.Point(57, 71);
+            this.Lbl_Password.Name = "Lbl_Password";
+            this.Lbl_Password.Size = new System.Drawing.Size(53, 13);
+            this.Lbl_Password.TabIndex = 9;
+            this.Lbl_Password.Text = "Password";
+            // 
+            // Lbl_Usuario
+            // 
+            this.Lbl_Usuario.AutoSize = true;
+            this.Lbl_Usuario.Location = new System.Drawing.Point(57, 32);
+            this.Lbl_Usuario.Name = "Lbl_Usuario";
+            this.Lbl_Usuario.Size = new System.Drawing.Size(43, 13);
+            this.Lbl_Usuario.TabIndex = 8;
+            this.Lbl_Usuario.Text = "Usuario";
+            // 
+            // Btn_Cancelar
+            // 
+            this.Btn_Cancelar.Location = new System.Drawing.Point(141, 129);
+            this.Btn_Cancelar.Name = "Btn_Cancelar";
+            this.Btn_Cancelar.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Cancelar.TabIndex = 7;
+            this.Btn_Cancelar.Text = "Cancelar";
+            this.Btn_Cancelar.UseVisualStyleBackColor = true;
+            this.Btn_Cancelar.Click += new System.EventHandler(this.Btn_Cancelar_Click);
+            // 
+            // Btn_Aceptar
+            // 
+            this.Btn_Aceptar.Location = new System.Drawing.Point(59, 129);
+            this.Btn_Aceptar.Name = "Btn_Aceptar";
+            this.Btn_Aceptar.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Aceptar.TabIndex = 6;
+            this.Btn_Aceptar.Text = "Aceptar";
+            this.Btn_Aceptar.UseVisualStyleBackColor = true;
+            this.Btn_Aceptar.Click += new System.EventHandler(this.Btn_Aceptar_Click);
+            // 
+            // Login
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(273, 205);
+            this.Controls.Add(this.Txt_Password);
+            this.Controls.Add(this.Txt_Usuario);
+            this.Controls.Add(this.Lbl_Password);
+            this.Controls.Add(this.Lbl_Usuario);
+            this.Controls.Add(this.Btn_Cancelar);
+            this.Controls.Add(this.Btn_Aceptar);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "Login";
+            this.Text = "Login";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+>>>>>>> Stashed changes
         }
 
         #endregion

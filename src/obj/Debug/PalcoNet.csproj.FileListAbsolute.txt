@@ -7,6 +7,7 @@ C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.Properties.Resources.r
 C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.csproj.GenerateResource.Cache
 C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.exe
 C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.pdb
+<<<<<<< Updated upstream
 C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Cliente.Alta.resources
 C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Cliente.Listado.resources
 C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Cliente.Modificacion.resources
@@ -19,3 +20,27 @@ C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.Generar_Publicacion.Cr
 C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.Login.resources
 C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.Registro_de_Usuario.Form1.resources
 C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.Roles.Roles.resources
+=======
+C:\Users\user\Desktop\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Cliente.Form1.resources
+C:\GitProyects\GDD-PalcoNet\src\bin\Debug\PalcoNet.exe.config
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.exe
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.pdb
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.csprojResolveAssemblyReference.cache
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Cliente.Alta.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Cliente.Listado.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Cliente.Modificacion.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Empresa_Espectaculo.Alta.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Empresa_Espectaculo.Listado_Empresa.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Empresa_Espectaculo.Modificacion.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Grado.BusquedaPorGrado.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Rol.Rol.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Generar_Publicacion.CrearPublicacion.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Properties.Resources.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Registro_de_Usuario.Form1.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.csproj.GenerateResource.Cache
+C:\GitProyects\GDD-PalcoNet\src\bin\Debug\PalcoNet.exe
+C:\GitProyects\GDD-PalcoNet\src\bin\Debug\PalcoNet.pdb
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Cl_Login.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Login.Roles.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Menu.MenuInicial.resources
+>>>>>>> Stashed changes
