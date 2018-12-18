@@ -51,7 +51,7 @@ namespace PalcoNet.Menu
 
         private void Btn_ABM_Rol_Click(object sender, EventArgs e)
         {
-            Rol rol = new Rol();
+            AbmRol rol = new AbmRol();
             rol.ShowDialog();
         }
 
