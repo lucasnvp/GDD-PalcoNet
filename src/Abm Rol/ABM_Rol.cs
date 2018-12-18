@@ -22,6 +22,17 @@ namespace PalcoNet.Abm_Rol
             this.Cmb_Estado.SelectedIndex = 0;
         }
 
+        private void Btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Btn_Buscar_Click(object sender, EventArgs e)
+        {
+            this.DGV_Roles.DataSource = GetRoles();
+            this.DGV_Roles.AllowUserToAddRows = false;
+        }
+
         private void Btn_Crear_Click(object sender, EventArgs e)
         {
             if (this.ValidarForm() == false)
@@ -35,12 +46,6 @@ namespace PalcoNet.Abm_Rol
             this.DGV_Roles.DataSource = GetRoles();
         }
 
-        private void Btn_Buscar_Click(object sender, EventArgs e)
-        {
-            this.DGV_Roles.DataSource = GetRoles();
-            this.DGV_Roles.AllowUserToAddRows = false;
-        }
-
         private void DGV_Roles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -49,11 +54,6 @@ namespace PalcoNet.Abm_Rol
                 this.Cmb_Estado.SelectedIndex = Convert.ToInt32(DGV_Roles.Rows[e.RowIndex].Cells[1].Value);
                 this.CompletarFuncionalidades();
             }
-        }
-
-        private void Btn_Cancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         public static DataTable GetFuncionalidades()
@@ -73,6 +73,16 @@ namespace PalcoNet.Abm_Rol
         {
             this.Txt_NombreRol.Text = string.Empty;
             this.Cmb_Estado.SelectedIndex = 0;
+            this.Clean_Funcionalidades();
+        }
+
+        private void Clean_Funcionalidades()
+        {
+            Int32 cantidad = this.Clb_Funcionalidades.Items.Count;
+            for (int i = 0; i < cantidad; i++)
+            {
+                this.Clb_Funcionalidades.SetItemChecked(i, false);
+            }
         }
 
         public static DataTable GetRoles()
@@ -157,11 +167,22 @@ namespace PalcoNet.Abm_Rol
             }
 
             Int32 cantidad = funcionalidades.Items.Count;
-            Int32 cantidad2 = tabla.Rows.Count;
-            for (int i = 0; i < cantidad && i < cantidad2; i++)
+            for (int i = 0; i < cantidad; i++)
             {
-                Boolean habilitado = Convert.ToBoolean(tabla.Rows[i].ItemArray[1].ToString());
-                funcionalidades.SetItemChecked(i, habilitado);
+                funcionalidades.SetItemChecked(i, false);
+            }
+
+            foreach (DataRow tablaRow in tabla.Rows)
+            {
+                for (int i = 0; i < cantidad; i++)
+                {
+                    DataRowView view = (DataRowView)funcionalidades.Items[i];
+                    if (view.Row.ItemArray[0].ToString() == tablaRow.ItemArray[0].ToString())
+                    {
+                        Boolean habilitado = Convert.ToBoolean(tablaRow.ItemArray[1].ToString());
+                        funcionalidades.SetItemChecked(i, habilitado);
+                    }
+                }
             }
         }
 
