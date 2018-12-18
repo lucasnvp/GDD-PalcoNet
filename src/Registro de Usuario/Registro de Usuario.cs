@@ -20,26 +20,9 @@ namespace PalcoNet.Registro_de_Usuario
             InitializeComponent();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnCliente_Click(object sender, EventArgs e)
         {
             this.Hide();
-            
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

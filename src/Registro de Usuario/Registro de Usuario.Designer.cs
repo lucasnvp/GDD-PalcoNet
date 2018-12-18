@@ -71,9 +71,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(8, 72);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(359, 139);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
@@ -83,7 +83,7 @@
             // 
             this.cmbRol.FormattingEnabled = true;
             this.cmbRol.Location = new System.Drawing.Point(175, 107);
-            this.cmbRol.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbRol.Margin = new System.Windows.Forms.Padding(2);
             this.cmbRol.Name = "cmbRol";
             this.cmbRol.Size = new System.Drawing.Size(82, 21);
             this.cmbRol.TabIndex = 9;
@@ -104,7 +104,7 @@
             this.btnEmpresa.AutoSize = true;
             this.btnEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmpresa.Location = new System.Drawing.Point(280, 82);
-            this.btnEmpresa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEmpresa.Margin = new System.Windows.Forms.Padding(2);
             this.btnEmpresa.Name = "btnEmpresa";
             this.btnEmpresa.Size = new System.Drawing.Size(65, 23);
             this.btnEmpresa.TabIndex = 7;
@@ -116,7 +116,7 @@
             this.btnCliente.AutoSize = true;
             this.btnCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCliente.Location = new System.Drawing.Point(280, 50);
-            this.btnCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCliente.Margin = new System.Windows.Forms.Padding(2);
             this.btnCliente.Name = "btnCliente";
             this.btnCliente.Size = new System.Drawing.Size(60, 23);
             this.btnCliente.TabIndex = 6;
@@ -127,7 +127,7 @@
             // txtReescriba
             // 
             this.txtReescriba.Location = new System.Drawing.Point(175, 81);
-            this.txtReescriba.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtReescriba.Margin = new System.Windows.Forms.Padding(2);
             this.txtReescriba.Name = "txtReescriba";
             this.txtReescriba.Size = new System.Drawing.Size(81, 20);
             this.txtReescriba.TabIndex = 5;
@@ -136,18 +136,17 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(21, 82);
+            this.label4.Location = new System.Drawing.Point(9, 82);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(162, 17);
             this.label4.TabIndex = 4;
             this.label4.Text = "Reescriba la contraseña";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // txtContraseña
             // 
             this.txtContraseña.Location = new System.Drawing.Point(175, 53);
-            this.txtContraseña.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtContraseña.Margin = new System.Windows.Forms.Padding(2);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.Size = new System.Drawing.Size(81, 20);
             this.txtContraseña.TabIndex = 3;
@@ -156,18 +155,17 @@
             // 
             this.Apellido.AutoSize = true;
             this.Apellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Apellido.Location = new System.Drawing.Point(92, 53);
+            this.Apellido.Location = new System.Drawing.Point(90, 54);
             this.Apellido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Apellido.Name = "Apellido";
             this.Apellido.Size = new System.Drawing.Size(81, 17);
             this.Apellido.TabIndex = 2;
             this.Apellido.Text = "Contraseña";
-            this.Apellido.Click += new System.EventHandler(this.label3_Click);
             // 
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(175, 27);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(81, 20);
             this.txtUsername.TabIndex = 1;
@@ -182,14 +180,13 @@
             this.label2.Size = new System.Drawing.Size(73, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "Username";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // btnAceptar
             // 
             this.btnAceptar.AutoSize = true;
             this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.Location = new System.Drawing.Point(288, 232);
-            this.btnAceptar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAceptar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(60, 23);
             this.btnAceptar.TabIndex = 2;
@@ -201,7 +198,7 @@
             this.btnCancelar.AutoSize = true;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Location = new System.Drawing.Point(63, 232);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(60, 23);
             this.btnCancelar.TabIndex = 3;
@@ -209,7 +206,7 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // Form1
+            // RegistroDeUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -218,8 +215,8 @@
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "RegistroDeUsuario";
             this.Text = "Registro";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

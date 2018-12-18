@@ -34,6 +34,7 @@
             this.Lbl_Usuario = new System.Windows.Forms.Label();
             this.Btn_Cancelar = new System.Windows.Forms.Button();
             this.Btn_Aceptar = new System.Windows.Forms.Button();
+            this.Btn_Registrarse = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Txt_Password
@@ -74,7 +75,7 @@
             this.Btn_Cancelar.Name = "Btn_Cancelar";
             this.Btn_Cancelar.Size = new System.Drawing.Size(75, 23);
             this.Btn_Cancelar.TabIndex = 7;
-            this.Btn_Cancelar.Text = "Cancelar";
+            this.Btn_Cancelar.Text = "Salir";
             this.Btn_Cancelar.UseVisualStyleBackColor = true;
             this.Btn_Cancelar.Click += new System.EventHandler(this.Btn_Cancelar_Click);
             // 
@@ -88,19 +89,30 @@
             this.Btn_Aceptar.UseVisualStyleBackColor = true;
             this.Btn_Aceptar.Click += new System.EventHandler(this.Btn_Aceptar_Click);
             // 
-            // Login
+            // Btn_Registrarse
+            // 
+            this.Btn_Registrarse.Location = new System.Drawing.Point(59, 158);
+            this.Btn_Registrarse.Name = "Btn_Registrarse";
+            this.Btn_Registrarse.Size = new System.Drawing.Size(157, 23);
+            this.Btn_Registrarse.TabIndex = 12;
+            this.Btn_Registrarse.Text = "Registrarse";
+            this.Btn_Registrarse.UseVisualStyleBackColor = true;
+            this.Btn_Registrarse.Click += new System.EventHandler(this.Btn_Registrarse_Click);
+            // 
+            // Cl_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(273, 205);
+            this.Controls.Add(this.Btn_Registrarse);
             this.Controls.Add(this.Txt_Password);
             this.Controls.Add(this.Txt_Usuario);
             this.Controls.Add(this.Lbl_Password);
             this.Controls.Add(this.Lbl_Usuario);
             this.Controls.Add(this.Btn_Cancelar);
             this.Controls.Add(this.Btn_Aceptar);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "Login";
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "Cl_Login";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -116,6 +128,7 @@
         private System.Windows.Forms.Label Lbl_Usuario;
         private System.Windows.Forms.Button Btn_Cancelar;
         private System.Windows.Forms.Button Btn_Aceptar;
+        private System.Windows.Forms.Button Btn_Registrarse;
     }
 }
 

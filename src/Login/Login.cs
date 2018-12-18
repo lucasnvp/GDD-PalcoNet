@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using PalcoNet.Menu;
 using PalcoNet.Conexiones;
 using PalcoNet.Login;
+using PalcoNet.Registro_de_Usuario;
 
 namespace PalcoNet
 {
@@ -132,6 +133,12 @@ namespace PalcoNet
             }
             return mensaje;
 
+        }
+
+        private void Btn_Registrarse_Click(object sender, EventArgs e)
+        {
+            RegistroDeUsuario regristroDeUsuario = new RegistroDeUsuario();
+            regristroDeUsuario.ShowDialog();
         }
 
     }
