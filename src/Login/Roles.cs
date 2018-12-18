@@ -1,34 +1,4 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace PalcoNet.Roles
-{
-    public partial class Roles : Form
-    {
-        public Roles()
-        {
-            InitializeComponent();
-        }
-
-        private void Roles_Load(object sender, EventArgs e)
-        {
-
-        }
-    }
-}
-=======
-=======
->>>>>>> Stashed changes
-﻿using PalcoNet.Funcionalidades;
+using PalcoNet.Funcionalidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -72,7 +42,3 @@ namespace PalcoNet.Login
         }
     }
 }
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes

@@ -43,7 +43,13 @@ C:\GitProyects\GDD-PalcoNet\src\bin\Debug\PalcoNet.pdb
 C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Cl_Login.resources
 C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Login.Roles.resources
 C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Menu.MenuInicial.resources
-<<<<<<< Updated upstream
 >>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Cliente.AltaClientes.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Cliente.ListadoClientes.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Cliente.ModificacionCliente.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Empresa_Espectaculo.AltaEmpresa.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Empresa_Espectaculo.ListadoEmpresa.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Empresa_Espectaculo.ModificacionEmpresa.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Abm_Rol.AbmRol.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Login.resources
+C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Roles.Roles.resources
