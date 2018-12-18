@@ -22,12 +22,19 @@ namespace PalcoNet.Registro_de_Usuario
 
         private void btnCliente_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            AltaClientes altaCliente = new AltaClientes();
+            altaCliente.ShowDialog();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnEmpresa_Click(object sender, EventArgs e)
+        {
+            AltaEmpresa altaEmpresa = new AltaEmpresa();
+            altaEmpresa.ShowDialog();
         }
     }
 }
