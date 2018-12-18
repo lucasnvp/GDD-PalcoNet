@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PalcoNet.DAOs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,54 +18,16 @@ namespace PalcoNet.Abm_Cliente
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Btn_Guardar_Click(object sender, EventArgs e)
         {
-
+            ClienteDAO.CreateCliente(
+                Txt_Username.Text, Txt_Password.Text, Txt_Nombre.Text, txtApellido.Text, CBX_TipoDni.Text, txtNumeroDoc.Text,
+                txtCuil.Text, txtMail.Text, txtTelefono.Text, txtCalle.Text, Txt_Nro_Calle.Text, txtNumeroPiso.Text,
+                txtDepartamento.Text, txtCP.Text, txtLocalidad.Text, txtNumeroTarjeta.Text, 
+                DTP_FechaDeNacimiento.Value.Date.ToString("yyyy/MM/dd"));
+            this.Close();
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_3(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox10_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Alta_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

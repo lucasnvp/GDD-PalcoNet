@@ -16,7 +16,8 @@ CREATE TABLE [GEDIENTOS].[Usuario](
   Usuario_Password VARCHAR(255) ,
   Fecha_Creacion DATETIME DEFAULT CURRENT_TIMESTAMP ,
   Usuario_Activo BIT NOT NULL DEFAULT 1, -- 1 Activo 0 Desactivo
-  Usuario_Intentos NUMERIC(1,0) NOT NULL DEFAULT 0
+  Usuario_Intentos NUMERIC(1,0) NOT NULL DEFAULT 0,
+  Usuario_Puntos NUMERIC(10,0) DEFAULT 0
 )
 GO
 
@@ -66,16 +67,15 @@ CREATE TABLE [GEDIENTOS].[Cliente](
   Cliente_Fecha_Nacimiento DATETIME,
   Cliente_Mail VARCHAR (255),
   Cliente_Domicilio_Calle VARCHAR (255),
-  Cliente_Nro_Calle NUMERIC (18),
-  Cliente_Nro_Piso NUMERIC (18),
+  Cliente_Nro_Calle NUMERIC (10,0),
+  Cliente_Nro_Piso NUMERIC (3,0),
   Cliente_Dpto VARCHAR (255),
   Cliente_Codigo_Postal VARCHAR (255),
   Cliente_Tipo_DNI VARCHAR(4),
-  Cliente_CUIL NUMERIC(25),
+  Cliente_CUIL VARCHAR (255),
   Cliente_Telefono NUMERIC (18),
   Cliente_Localidad VARCHAR (50),
-  Cliente_Fecha_Creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
-  Cliente_Id_Tajeta_Credito INT
+  Cliente_Fecha_Creacion DATETIME DEFAULT CURRENT_TIMESTAMP
 )
 GO
 
@@ -499,6 +499,7 @@ AS
   END CATCH
 GO
 
+-- SP Get Funcionalidad por Rol
 CREATE PROCEDURE GEDIENTOS.SP_Get_Funcionalidades_Rol
   @nombre_rol VARCHAR(255)
 AS
@@ -544,6 +545,57 @@ AS
     SELECT 'ERROR', ERROR_MESSAGE()
   END CATCH
  GO
+
+-- SP Create Cliente
+CREATE PROCEDURE GEDIENTOS.SP_Create_Cliente
+	@Username VARCHAR(255),
+	@Password VARCHAR(255),
+	@Nombre VARCHAR(255),
+	@Apellido VARCHAR(255),
+	@Tipo_Dni VARCHAR(4),
+	@Nro_Doc NUMERIC (18),
+	@Cuil VARCHAR(255),
+	@Mail VARCHAR(255),
+	@Telefono NUMERIC(18) = NULL ,
+	@Dominicio_Calle VARCHAR(255),
+	@Nro_Calle NUMERIC (10) = NULL,
+	@Nro_Piso NUMERIC (3) = NULL ,
+	@Dpto VARCHAR(255) = NULL ,
+	@Codigo_Postal VARCHAR(255),
+	@Localidad VARCHAR(50),
+	@Nro_Tarjeta NUMERIC(30),
+	@Fecha_Nac DATETIME
+AS
+	BEGIN TRANSACTION
+		DECLARE @Usuario_id INT
+		DECLARE @Rol_id INT
+		DECLARE @Cliente_id INT
+
+		SELECT @Rol_id = Rol_Id FROM GEDIENTOS.Rol WHERE Rol_Nombre = 'Cliente'
+
+		INSERT GEDIENTOS.Usuario(Usuario_Username, Usuario_Password) VALUES(@Username, @Password);
+		SELECT @Usuario_id = SCOPE_IDENTITY();
+
+		INSERT GEDIENTOS.Cliente(
+			Cliente_Usuario_Id, Cliente_Apellido, Cliente_Nombre, Cliente_Fecha_Nacimiento, Cliente_Mail, Cliente_Domicilio_Calle, Cliente_Nro_Calle, Cliente_Nro_Piso,
+			Cliente_Dpto, Cliente_Codigo_Postal, Cliente_Tipo_DNI, Cliente_Dni, Cliente_CUIL, Cliente_Telefono, Cliente_Localidad)
+		VALUES (
+			@Usuario_id, @Apellido, @Nombre, @Fecha_Nac, @Mail, @Dominicio_Calle, @Nro_Calle, @Nro_Piso, @Dpto, @Codigo_Postal, @Tipo_Dni,@Nro_Doc, 
+			@Cuil, @Telefono, @Localidad);
+		SELECT @Cliente_id = SCOPE_IDENTITY();
+
+		INSERT INTO GEDIENTOS.Asignacion_Rol(Asignacion_Rol_Id, Asignacion_Rol_Usuario_Id) VALUES(@Rol_id, @Usuario_id);
+
+		INSERT INTO GEDIENTOS.Tarjeta_Credito(Tarjeta_Credito_Cliente_Id, Tarjeta_Credito_Nro) VALUES(@Cliente_id, @Nro_Tarjeta);
+		
+		IF @@ERROR <> 0   
+			BEGIN
+				SELECT 'ERROR', ERROR_MESSAGE()  
+				ROLLBACK
+				RETURN
+			END  
+	COMMIT
+GO
 
 /*******************************************
 *	Comienzo de la carga inicial de datos

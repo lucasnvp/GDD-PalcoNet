@@ -13,6 +13,7 @@ namespace PalcoNet.Conexiones
         public string Nombre { get; set; }
         public string Valor { get; set; }
         public DBNull ValorNull { get; set; }
+
         public Parametro AgregarParametro(string nombre, string valor)
         {
             this.Nombre = nombre;
@@ -26,6 +27,7 @@ namespace PalcoNet.Conexiones
             this.ValorNull = valor;
             return this;
         }
+
     }
 
     public class Parametros
