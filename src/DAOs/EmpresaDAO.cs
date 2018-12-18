@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace PalcoNet.DAOs
 {
-    class ClienteDAO
+    class EmpresaDAO
     {
         public static void CreateCliente(
-            string username,    string password,    string nombre,  string apellido,        string tipo_dni,
-            string nro_doc,     string cuil,        string mail,    string telefono,        string domicilio_Calle,
-            string nro_Calle,   string nro_Piso,    string dpto,    string codigo_Postal,   string localidad,
-            string nro_tarjeta, string fecha_nac)
+            string username, string password, string razon_Social, string cuit, string mail, string direccion, string nro_Calle, 
+            string nro_Piso, string dpto, string codigo_Postal, string localidad, string ciudad, string telefono)
         {
             SqlServer sql = new SqlServer();
             Parametros parametros = new Parametros();
@@ -27,21 +25,10 @@ namespace PalcoNet.DAOs
 
             parametros.AgregarParametro("Username", username.Trim());
             parametros.AgregarParametro("Password", passwordHash);
-            parametros.AgregarParametro("Nombre", nombre.Trim());
-            parametros.AgregarParametro("Apellido", apellido.Trim());
-            parametros.AgregarParametro("Tipo_Dni", tipo_dni.Trim());
-            parametros.AgregarParametro("Nro_Doc", nro_doc.Trim());
-            parametros.AgregarParametro("Cuil", cuil.Trim());
+            parametros.AgregarParametro("Razon_Social", razon_Social.Trim());
+            parametros.AgregarParametro("Cuit", cuit.Trim());
             parametros.AgregarParametro("Mail", mail.Trim());
-            if (telefono.Equals(""))
-            {
-                parametros.AgregarParametro("Telefono", DBNull.Value);
-            }
-            else
-            {
-                parametros.AgregarParametro("Telefono", telefono.Trim());
-            }
-            parametros.AgregarParametro("Dominicio_Calle", domicilio_Calle.Trim());
+            parametros.AgregarParametro("Direccion", direccion.Trim());
             parametros.AgregarParametro("Nro_Calle", nro_Calle.Trim());
             if (nro_Piso.Equals(""))
             {
@@ -61,19 +48,26 @@ namespace PalcoNet.DAOs
             }
             parametros.AgregarParametro("Codigo_Postal", codigo_Postal.Trim());
             parametros.AgregarParametro("Localidad", localidad.Trim());
-            parametros.AgregarParametro("Nro_Tarjeta", nro_tarjeta.Trim());
-            parametros.AgregarParametro("Fecha_Nac", fecha_nac);
+            parametros.AgregarParametro("Ciudad", ciudad.Trim());
+            if (telefono.Equals(""))
+            {
+                parametros.AgregarParametro("Telefono", DBNull.Value);
+            }
+            else
+            {
+                parametros.AgregarParametro("Telefono", telefono.Trim());
+            }
             
             try
             {
-                DataTable table = sql.EjecutarSp("SP_Create_Cliente", parametros);
+                DataTable table = sql.EjecutarSp("SP_Create_Empresa", parametros);
                 if (table.Rows.Count > 0 && table.Rows[0].ItemArray[0].ToString() == "ERROR")
                 {
                     MessageBox.Show(table.Rows[0].ItemArray[1].ToString());
                 }
                 else
                 {
-                    MessageBox.Show("Cliente creado");
+                    MessageBox.Show("Empresa creado");
                 }
             }
             catch (Exception e)
@@ -82,5 +76,7 @@ namespace PalcoNet.DAOs
             }
 
         }
+
+
     }
 }

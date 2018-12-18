@@ -67,14 +67,14 @@ CREATE TABLE [GEDIENTOS].[Cliente](
   Cliente_Fecha_Nacimiento DATETIME,
   Cliente_Mail VARCHAR (255),
   Cliente_Domicilio_Calle VARCHAR (255),
-  Cliente_Nro_Calle NUMERIC (10,0),
-  Cliente_Nro_Piso NUMERIC (3,0),
+  Cliente_Nro_Calle NUMERIC(18,0),
+  Cliente_Nro_Piso NUMERIC(18,0),
   Cliente_Dpto VARCHAR (255),
   Cliente_Codigo_Postal VARCHAR (255),
   Cliente_Tipo_DNI VARCHAR(4),
   Cliente_CUIL VARCHAR (255),
-  Cliente_Telefono NUMERIC (18),
-  Cliente_Localidad VARCHAR (50),
+  Cliente_Telefono VARCHAR (50),
+  Cliente_Localidad VARCHAR (255),
   Cliente_Fecha_Creacion DATETIME DEFAULT CURRENT_TIMESTAMP
 )
 GO
@@ -94,13 +94,13 @@ CREATE TABLE [GEDIENTOS].[Empresa](
   Empresa_Usuario_Id INT ,
   Empresa_Razon_Social VARCHAR (255) NOT NULL,
   Empresa_Cuit VARCHAR (255) NOT NULL UNIQUE,
-  Empresa_Fecha_Creacion DATETIME,
+  Empresa_Fecha_Creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
   Empresa_Mail VARCHAR (50),
   Empresa_Direccion VARCHAR (50),
   Empresa_Nro_Calle NUMERIC(18,0),
   Empresa_Nro_Piso NUMERIC(18,0),
   Empresa_Dpto VARCHAR (50),
-  Empresa_Codigo_Postal VARCHAR (50),
+  Empresa_Codigo_Postal VARCHAR (255),
   Empresa_Localidad VARCHAR (50),
   Empresa_Ciudad VARCHAR (255),
   Empresa_Telefono VARCHAR(50)
@@ -556,7 +556,7 @@ CREATE PROCEDURE GEDIENTOS.SP_Create_Cliente
 	@Nro_Doc NUMERIC (18),
 	@Cuil VARCHAR(255),
 	@Mail VARCHAR(255),
-	@Telefono NUMERIC(18) = NULL ,
+	@Telefono VARCHAR(50) = NULL ,
 	@Dominicio_Calle VARCHAR(255),
 	@Nro_Calle NUMERIC (10) = NULL,
 	@Nro_Piso NUMERIC (3) = NULL ,
@@ -588,6 +588,48 @@ AS
 
 		INSERT INTO GEDIENTOS.Tarjeta_Credito(Tarjeta_Credito_Cliente_Id, Tarjeta_Credito_Nro) VALUES(@Cliente_id, @Nro_Tarjeta);
 		
+		IF @@ERROR <> 0   
+			BEGIN
+				SELECT 'ERROR', ERROR_MESSAGE()  
+				ROLLBACK
+				RETURN
+			END  
+	COMMIT
+GO
+
+-- SP Create Empresa
+CREATE PROCEDURE GEDIENTOS.SP_Create_Empresa
+  @Username VARCHAR (255) ,
+  @Password VARCHAR (255) ,
+  @Razon_Social VARCHAR (255) ,
+  @Cuit VARCHAR (255) ,
+  @Mail VARCHAR (50) ,
+  @Direccion VARCHAR (50) ,
+  @Nro_Calle NUMERIC(18,0) ,
+  @Nro_Piso NUMERIC(18,0) = NULL ,
+  @Dpto VARCHAR (50) = NULL ,
+  @Codigo_Postal VARCHAR (255) ,
+  @Localidad VARCHAR (50) ,
+  @Ciudad VARCHAR (255) ,
+  @Telefono VARCHAR(50) = NULL
+AS
+	BEGIN TRANSACTION
+		DECLARE @Usuario_id INT
+		DECLARE @Rol_id INT
+
+		SELECT @Rol_id = Rol_Id FROM GEDIENTOS.Rol WHERE Rol_Nombre = 'Empresa'
+
+		INSERT GEDIENTOS.Usuario(Usuario_Username, Usuario_Password) VALUES(@Username, @Password);
+		SELECT @Usuario_id = SCOPE_IDENTITY();
+
+		INSERT GEDIENTOS.Empresa(
+			Empresa_Usuario_Id, Empresa_Razon_Social, Empresa_Cuit, Empresa_Mail, Empresa_Direccion, Empresa_Nro_Calle, Empresa_Nro_Piso, Empresa_Dpto,
+			Empresa_Codigo_Postal, Empresa_Localidad, Empresa_Ciudad, Empresa_Telefono)
+		VALUES (
+			@Usuario_id, @Razon_Social, @Cuit, @Mail, @Direccion, @Nro_Calle, @Nro_Piso, @Dpto, @Codigo_Postal, @Localidad, @Ciudad, @Telefono);
+
+		INSERT INTO GEDIENTOS.Asignacion_Rol(Asignacion_Rol_Id, Asignacion_Rol_Usuario_Id) VALUES(@Rol_id, @Usuario_id);
+
 		IF @@ERROR <> 0   
 			BEGIN
 				SELECT 'ERROR', ERROR_MESSAGE()  

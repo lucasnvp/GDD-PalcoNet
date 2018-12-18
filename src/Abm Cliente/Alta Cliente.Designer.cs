@@ -31,6 +31,9 @@
             this.lblAltaDeCliente = new System.Windows.Forms.Label();
             this.lblNuevoCliente = new System.Windows.Forms.Label();
             this.gbDatos = new System.Windows.Forms.GroupBox();
+            this.DTP_FechaDeNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Txt_Nro_Calle = new System.Windows.Forms.Label();
             this.CBX_TipoDni = new System.Windows.Forms.ComboBox();
             this.txtCP = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -65,9 +68,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.Txt_Username = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.Txt_Nro_Calle = new System.Windows.Forms.Label();
-            this.DTP_FechaDeNacimiento = new System.Windows.Forms.DateTimePicker();
             this.gbDatos.SuspendLayout();
             this.gpTCredito.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -133,6 +133,31 @@
             this.gbDatos.TabIndex = 2;
             this.gbDatos.TabStop = false;
             this.gbDatos.Text = "Datos Personales";
+            // 
+            // DTP_FechaDeNacimiento
+            // 
+            this.DTP_FechaDeNacimiento.Location = new System.Drawing.Point(158, 87);
+            this.DTP_FechaDeNacimiento.Name = "DTP_FechaDeNacimiento";
+            this.DTP_FechaDeNacimiento.Size = new System.Drawing.Size(258, 20);
+            this.DTP_FechaDeNacimiento.TabIndex = 58;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(435, 147);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(89, 20);
+            this.textBox1.TabIndex = 57;
+            // 
+            // Txt_Nro_Calle
+            // 
+            this.Txt_Nro_Calle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.Txt_Nro_Calle.Location = new System.Drawing.Point(392, 149);
+            this.Txt_Nro_Calle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Txt_Nro_Calle.Name = "Txt_Nro_Calle";
+            this.Txt_Nro_Calle.Size = new System.Drawing.Size(39, 15);
+            this.Txt_Nro_Calle.TabIndex = 56;
+            this.Txt_Nro_Calle.Text = "Nro";
             // 
             // CBX_TipoDni
             // 
@@ -413,9 +438,9 @@
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.Txt_Username);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Location = new System.Drawing.Point(14, 66);
+            this.groupBox1.Location = new System.Drawing.Point(12, 66);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(575, 58);
+            this.groupBox1.Size = new System.Drawing.Size(577, 58);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de Usuario";
@@ -455,31 +480,6 @@
             this.label13.TabIndex = 27;
             this.label13.Text = "Username";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(435, 147);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(89, 20);
-            this.textBox1.TabIndex = 57;
-            // 
-            // Txt_Nro_Calle
-            // 
-            this.Txt_Nro_Calle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Txt_Nro_Calle.Location = new System.Drawing.Point(392, 149);
-            this.Txt_Nro_Calle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Txt_Nro_Calle.Name = "Txt_Nro_Calle";
-            this.Txt_Nro_Calle.Size = new System.Drawing.Size(39, 15);
-            this.Txt_Nro_Calle.TabIndex = 56;
-            this.Txt_Nro_Calle.Text = "Nro";
-            // 
-            // DTP_FechaDeNacimiento
-            // 
-            this.DTP_FechaDeNacimiento.Location = new System.Drawing.Point(158, 87);
-            this.DTP_FechaDeNacimiento.Name = "DTP_FechaDeNacimiento";
-            this.DTP_FechaDeNacimiento.Size = new System.Drawing.Size(258, 20);
-            this.DTP_FechaDeNacimiento.TabIndex = 58;
             // 
             // AltaClientes
             // 

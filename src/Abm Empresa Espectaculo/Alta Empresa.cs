@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PalcoNet.DAOs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,29 +18,14 @@ namespace PalcoNet.Abm_Empresa_Espectaculo
             InitializeComponent();
         }
 
-        private void lblNuevoCliente_Click(object sender, EventArgs e)
+        private void Btn_Guardar_Click(object sender, EventArgs e)
         {
-
+            EmpresaDAO.CreateCliente(
+                Txt_Username.Text, Txt_Username.Text, Txt_Razon_Social.Text, txtCuit.Text, txtMail.Text, 
+                Txt_Direccion.Text, Txt_Nro_Calle.Text, txtNumeroPiso.Text, txtDepartamento.Text, 
+                txtCP.Text, txtLocalidad.Text, txtCiudad.Text, txtTelefono.Text);
+            this.Close();
         }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCuil_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
