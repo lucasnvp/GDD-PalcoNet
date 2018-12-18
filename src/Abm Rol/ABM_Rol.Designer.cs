@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-
-            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Lbl_LimpiarCampos = new System.Windows.Forms.LinkLabel();
             this.Cmb_Estado = new System.Windows.Forms.ComboBox();
@@ -39,16 +37,12 @@
             this.Txt_NombreRol = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.DGV_Roles = new System.Windows.Forms.DataGridView();
-            this.gD2C2018DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gD2C2018DataSet = new PalcoNet.GD2C2018DataSet();
             this.Btn_Crear = new System.Windows.Forms.Button();
             this.Btn_Modificar = new System.Windows.Forms.Button();
             this.Btn_Cancelar = new System.Windows.Forms.Button();
             this.Btn_Buscar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Roles)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -130,24 +124,12 @@
             // 
             // DGV_Roles
             // 
-            this.DGV_Roles.AutoGenerateColumns = false;
             this.DGV_Roles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_Roles.DataSource = this.gD2C2018DataSetBindingSource;
             this.DGV_Roles.Location = new System.Drawing.Point(43, 19);
             this.DGV_Roles.Name = "DGV_Roles";
             this.DGV_Roles.Size = new System.Drawing.Size(321, 410);
             this.DGV_Roles.TabIndex = 6;
             this.DGV_Roles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Roles_CellContentClick);
-            // 
-            // gD2C2018DataSetBindingSource
-            // 
-            this.gD2C2018DataSetBindingSource.DataSource = this.gD2C2018DataSet;
-            this.gD2C2018DataSetBindingSource.Position = 0;
-            // 
-            // gD2C2018DataSet
-            // 
-            this.gD2C2018DataSet.DataSetName = "GD2C2018DataSet";
-            this.gD2C2018DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // Btn_Crear
             // 
@@ -189,7 +171,7 @@
             this.Btn_Buscar.UseVisualStyleBackColor = true;
             this.Btn_Buscar.Click += new System.EventHandler(this.Btn_Buscar_Click);
             // 
-            // Rol
+            // AbmRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -200,14 +182,12 @@
             this.Controls.Add(this.Btn_Buscar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.DGV_Roles);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "Rol";
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "AbmRol";
             this.Text = "ABM_Rol";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Roles)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -227,7 +207,5 @@
         private System.Windows.Forms.Button Btn_Modificar;
         private System.Windows.Forms.Button Btn_Cancelar;
         private System.Windows.Forms.Button Btn_Buscar;
-        private System.Windows.Forms.BindingSource gD2C2018DataSetBindingSource;
-        private GD2C2018DataSet gD2C2018DataSet;
     }
 }
