@@ -33,7 +33,5 @@ namespace PalcoNet.Funcionalidades
             }
         }
 
-
-
     }
 }

@@ -59,7 +59,6 @@ namespace PalcoNet.Funcionalidades
 
         public static int SetSelect(ComboBox combo, string value)
         {
-            ComboBoxItem item = null;
             DataRowView row = null;
             for (int i = 0; i < combo.Items.Count; i++)
             {

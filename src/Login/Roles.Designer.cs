@@ -81,3 +81,4 @@ namespace PalcoNet.Login
         private System.Windows.Forms.Button Btn_Aceptar;
         private System.Windows.Forms.Label label1;
     }
+}

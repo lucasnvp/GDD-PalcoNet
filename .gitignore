@@ -1,2 +1,6 @@
 
 \.idea/
+
+src/bin/Debug/
+
+src/obj/Debug/
