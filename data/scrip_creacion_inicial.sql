@@ -12,7 +12,7 @@ GO
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Usuario') DROP TABLE [GEDIENTOS].[Usuario]
 CREATE TABLE [GEDIENTOS].[Usuario](
   Usuario_Id INT PRIMARY KEY IDENTITY(1,1) ,
-  Usuario_Username VARCHAR(255) ,
+  Usuario_Username VARCHAR(255) UNIQUE,
   Usuario_Password VARCHAR(255) ,
   Fecha_Creacion DATETIME DEFAULT CURRENT_TIMESTAMP ,
   Usuario_Activo BIT NOT NULL DEFAULT 1, -- 1 Activo 0 Desactivo
@@ -562,7 +562,18 @@ GO
 
 -- Funcionalidades
 INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_ABM_Rol')
-INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_Registro_De_Usuario')
+INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_Generar_Rendicion')
+INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_ABM_Usuario')
+INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_ABM_Cliente')
+INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_ABM_Empresa')
+INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_ABM_Rubro')
+INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_ABM_Grado_De_Publicacion')
+INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_Generar_Publicacion')
+INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_Editar_Publicacion')
+INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_Comprar')
+INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_Historial_De_Cliente')
+INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_Canje_De_Puntos')
+INSERT INTO GEDIENTOS.Funcionalidad(Funcionalidad_Descripcion) VALUES ('Btn_Listado_Estadistico')
 GO
 
 -- Asigno los roles a los usuarios
@@ -573,5 +584,28 @@ GO
 
 -- Agrego las funciones por rol
 EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_ABM_Rol',1
-EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_Registro_De_Usuario',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_Generar_Rendicion',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_ABM_Usuario',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_ABM_Cliente',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_ABM_Empresa',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_ABM_Rubro',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_ABM_Grado_De_Publicacion',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_Generar_Publicacion',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_Editar_Publicacion',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_Comprar',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_Historial_De_Cliente',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_Canje_De_Puntos',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_Listado_Estadistico',1
+
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Empresa','Btn_Generar_Publicacion',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Empresa','Btn_Editar_Publicacion',1
+
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrativo','Btn_Generar_Rendicion',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrativo','Btn_ABM_Usuario',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrativo','Btn_Listado_Estadistico',1
+
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Cliente','Btn_Comprar',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Cliente','Btn_Historial_De_Cliente',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Cliente','Btn_Canje_De_Puntos',1
+
 GO

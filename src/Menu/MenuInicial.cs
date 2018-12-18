@@ -56,10 +56,64 @@ namespace PalcoNet.Menu
             rol.ShowDialog();
         }
 
-        private void Btn_Registro_De_Usuario_Click(object sender, EventArgs e)
+        private void Btn_Generar_Rendicion_Click(object sender, EventArgs e)
         {
-            RegistroDeUsuario registroDeUsuario = new RegistroDeUsuario();
-            registroDeUsuario.ShowDialog();
+
+        }
+
+        private void Btn_ABM_Usuario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_ABM_Cliente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_ABM_Empresa_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_ABM_Rubro_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_ABM_Grado_De_Publicacion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Generar_Publicacion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Editar_Publicacion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Comprar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Historial_De_Cliente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Canje_De_Puntos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Listado_Estadistico_Click(object sender, EventArgs e)
+        {
+
         }
 
     }
