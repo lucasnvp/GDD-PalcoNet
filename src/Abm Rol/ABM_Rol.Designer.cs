@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Lbl_LimpiarCampos = new System.Windows.Forms.LinkLabel();
@@ -221,6 +222,8 @@
             this.ResumeLayout(false);
 
 =======
+=======
+>>>>>>> Stashed changes
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Lbl_LimpiarCampos = new System.Windows.Forms.LinkLabel();
@@ -402,6 +405,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gD2C2018DataSet)).EndInit();
             this.ResumeLayout(false);
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         }
 

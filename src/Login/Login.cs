@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,6 +36,8 @@ namespace PalcoNet
     }
 }
 =======
+=======
+>>>>>>> Stashed changes
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -173,4 +176,7 @@ namespace PalcoNet
 
     }
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

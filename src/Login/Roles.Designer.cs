@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ﻿namespace PalcoNet.Roles
 {
     partial class Roles
@@ -87,6 +88,8 @@
         private System.Windows.Forms.Label label1;
     }
 =======
+=======
+>>>>>>> Stashed changes
 ﻿namespace PalcoNet.Login
 {
     partial class Roles
@@ -170,5 +173,8 @@
         private System.Windows.Forms.Button Btn_Aceptar;
         private System.Windows.Forms.Label label1;
     }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }

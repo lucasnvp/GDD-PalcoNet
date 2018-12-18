@@ -43,4 +43,7 @@ C:\GitProyects\GDD-PalcoNet\src\bin\Debug\PalcoNet.pdb
 C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Cl_Login.resources
 C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Login.Roles.resources
 C:\GitProyects\GDD-PalcoNet\src\obj\Debug\PalcoNet.Menu.MenuInicial.resources
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

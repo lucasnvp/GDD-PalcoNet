@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,8 @@ namespace PalcoNet.Roles
     }
 }
 =======
+=======
+>>>>>>> Stashed changes
 ﻿using PalcoNet.Funcionalidades;
 using System;
 using System.Collections.Generic;
@@ -69,4 +72,7 @@ namespace PalcoNet.Login
         }
     }
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

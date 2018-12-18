@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             this.Txt_Password = new System.Windows.Forms.TextBox();
             this.Txt_Usuario = new System.Windows.Forms.TextBox();
             this.Lbl_Password = new System.Windows.Forms.Label();
@@ -113,6 +114,8 @@
             this.PerformLayout();
 
 =======
+=======
+>>>>>>> Stashed changes
             this.Txt_Password = new System.Windows.Forms.TextBox();
             this.Txt_Usuario = new System.Windows.Forms.TextBox();
             this.Lbl_Password = new System.Windows.Forms.Label();
@@ -191,6 +194,9 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         }
 
