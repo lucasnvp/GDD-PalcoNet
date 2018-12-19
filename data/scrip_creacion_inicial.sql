@@ -103,7 +103,8 @@ CREATE TABLE [GEDIENTOS].[Empresa](
   Empresa_Codigo_Postal VARCHAR (255),
   Empresa_Localidad VARCHAR (50),
   Empresa_Ciudad VARCHAR (255),
-  Empresa_Telefono VARCHAR(50)
+  Empresa_Telefono VARCHAR(50) ,
+  Empresa_Grado_Publicacion_Id INT DEFAULT 1
 )
 GO 
 
@@ -116,11 +117,11 @@ CREATE TABLE [GEDIENTOS].[Rubro](
 GO
 
 -- 10 Tabla Precio por Grado
-IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Precio_Grado') DROP TABLE [GEDIENTOS].[Precio_Grado]
-CREATE TABLE [GEDIENTOS].[Precio_Grado](
-  Precio_Grado_Id INT PRIMARY KEY,
-  Precio_Grado_Descripcion VARCHAR (255),
-  Precio_Grado_Precio NUMERIC(18)
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Grado_Publicacion') DROP TABLE [GEDIENTOS].Grado_Publicacion
+CREATE TABLE [GEDIENTOS].[Grado_Publicacion](
+  Grado_Publicacion_Id INT PRIMARY KEY IDENTITY(1,1),
+  Grado_Publicacion_Descripcion VARCHAR (255),
+  Grado_Publicacion_Porcentaje NUMERIC(18)
 )
 GO
 
@@ -156,12 +157,9 @@ CREATE TABLE [GEDIENTOS].[Espectaculo](
   Espectaculo_Fecha_Vencimiento DATETIME ,
   Espectaculo_Rubro_Id INT ,
   Espectaculo_Estado_Publicacion_Id INT ,
-	
-  
-  Espectaculo_Precio_Grado_Id INT ,
-  Espectaculo_Usuario_Id INT ,
-  Espectaculo_Fecha_Publicacion DATE,
-  Espectaculo_Direccion VARCHAR (255)
+  Espectaculo_Fecha_Publicacion DATE DEFAULT CURRENT_TIMESTAMP,
+  Espectaculo_Direccion VARCHAR (255),
+  Espectaculo_Grado_Publicacion_Id INT,
 )
 GO
 
@@ -366,30 +364,6 @@ JOIN GEDIENTOS.Compra Com
 	AND Com.Compra_Espectaculo_Id = Esp.Espectaculo_Id
 	AND Com.Compra_Ubicacion_Id = Ubi.Ubicacion_Id
 WHERE Maestra.Factura_Nro IS NOT NULL
-GO
-
-/*******************************************
-*	Creo las FK
-*******************************************/
-
-ALTER TABLE GEDIENTOS.Asignacion_Rol ADD CONSTRAINT FK_Usuario_Asignacion_Rol FOREIGN KEY (Asignacion_Rol_Usuario_Id) REFERENCES GEDIENTOS.Usuario(Usuario_Id);
-ALTER TABLE GEDIENTOS.Asignacion_Rol ADD CONSTRAINT FK_Rol_Asignacion_Rol FOREIGN KEY (Asignacion_Rol_Id) REFERENCES GEDIENTOS.Rol(Rol_Id);
-ALTER TABLE GEDIENTOS.Rol_X_Funcionalidad ADD CONSTRAINT FK_Funcionalidad_Rol_X_Funcionalidad FOREIGN KEY (Funcionalidad_Id) REFERENCES GEDIENTOS.Funcionalidad(Funcionalidad_Id);
-ALTER TABLE GEDIENTOS.Rol_X_Funcionalidad ADD CONSTRAINT FK_Rol_Rol_X_Funcionalidad FOREIGN KEY (Rol_Id) REFERENCES GEDIENTOS.Rol(Rol_Id);
-ALTER TABLE GEDIENTOS.Tarjeta_Credito ADD CONSTRAINT FK_Cliente_Tarjeta_Credito FOREIGN KEY (Tarjeta_Credito_Cliente_Id) REFERENCES GEDIENTOS.Cliente(Cliente_Id);
-ALTER TABLE GEDIENTOS.Cliente ADD CONSTRAINT FK_Usuario_Cliente FOREIGN KEY (Cliente_Usuario_Id) REFERENCES GEDIENTOS.Usuario(Usuario_Id);
-ALTER TABLE GEDIENTOS.Empresa ADD CONSTRAINT FK_Usuario_Empresa FOREIGN KEY (Empresa_Usuario_Id) REFERENCES GEDIENTOS.Usuario(Usuario_Id);
-ALTER TABLE GEDIENTOS.Compra ADD CONSTRAINT FK_Forma_De_Pago_Compra FOREIGN KEY (Compra_Forma_De_Pago_Id) REFERENCES GEDIENTOS.Forma_De_Pago(Forma_De_Pago_Id);
-ALTER TABLE GEDIENTOS.Compra ADD CONSTRAINT FK_Factura_Compra FOREIGN KEY (Compra_Factura_Id) REFERENCES GEDIENTOS.Factura(Factura_Id);
-ALTER TABLE GEDIENTOS.Item_Factura ADD CONSTRAINT FK_Factura_Item_Factura FOREIGN KEY (Factura_Id) REFERENCES GEDIENTOS.Factura(Factura_Id);
-ALTER TABLE GEDIENTOS.Compra ADD CONSTRAINT FK_Ubicacion_Compra FOREIGN KEY (Compra_Ubicacion_Id) REFERENCES GEDIENTOS.Ubicacion(Ubicacion_Id);
-ALTER TABLE GEDIENTOS.Item_Factura ADD CONSTRAINT FK_Compra_Item_Factura FOREIGN KEY (Item_Factura_Compra_Id) REFERENCES GEDIENTOS.Compra(Compra_Id);
-ALTER TABLE GEDIENTOS.Ubicacion ADD CONSTRAINT FK_Tipo_De_Ubicacion FOREIGN KEY (Ubicacion_Tipo_Descripcion_Id) REFERENCES GEDIENTOS.Tipo_De_Ubicacion(Tipo_De_Ubicacion_Id);
-ALTER TABLE GEDIENTOS.Ubicacion ADD CONSTRAINT FK_Espectaculo_Ubicacion FOREIGN KEY (Ubicacion_Espectaculo_Id) REFERENCES GEDIENTOS.Espectaculo(Espectaculo_Id);
-ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Estado_Publicacion_Espectaculo FOREIGN KEY (Espectaculo_Estado_Publicacion_Id) REFERENCES GEDIENTOS.Estado_Publicacion(Estado_Publicacion_Id);
-ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Precio_Grado_Espectaculo FOREIGN KEY (Espectaculo_Precio_Grado_Id) REFERENCES GEDIENTOS.Precio_Grado(Precio_Grado_Id);
-ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Rubro_Espectaculo FOREIGN KEY (Espectaculo_Rubro_Id) REFERENCES GEDIENTOS.Rubro(Rubro_Id);
-ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Empresa_Espectaculo FOREIGN KEY (Espectaculo_Empresa_Id) REFERENCES GEDIENTOS.Empresa(Empresa_Id);
 GO
 
 /*******************************************
@@ -639,6 +613,30 @@ AS
 	COMMIT
 GO
 
+-- SP Get Grados Publicacion
+CREATE PROCEDURE GEDIENTOS.SP_Get_Grados_Publicacion
+AS
+  BEGIN TRY
+	SELECT Grado_Publicacion_Id AS ID, Grado_Publicacion_Descripcion AS Nombre FROM GEDIENTOS.Grado_Publicacion
+  END TRY
+  BEGIN CATCH
+    SELECT 'ERROR', ERROR_MESSAGE()
+  END CATCH
+GO
+
+-- SP Get Grados Publicacion
+CREATE PROCEDURE GEDIENTOS.SP_Update_Grados_Publicacion
+	@Grado_Id INT,
+	@Usuario_Id INT
+AS
+  BEGIN TRY
+	UPDATE GEDIENTOS.Empresa SET Empresa_Grado_Publicacion_Id = @Grado_Id WHERE Empresa_Usuario_Id = @Usuario_Id
+  END TRY
+  BEGIN CATCH
+    SELECT 'ERROR', ERROR_MESSAGE()
+  END CATCH
+GO
+
 /*******************************************
 *	Comienzo de la carga inicial de datos
 *******************************************/
@@ -693,6 +691,7 @@ EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrador General','Btn_Li
 
 EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Empresa','Btn_Generar_Publicacion',1
 EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Empresa','Btn_Editar_Publicacion',1
+EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Empresa','Btn_ABM_Grado_De_Publicacion',1
 
 EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrativo','Btn_Generar_Rendicion',1
 EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrativo','Btn_ABM_Usuario',1
@@ -701,5 +700,35 @@ EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Administrativo','Btn_Listado_E
 EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Cliente','Btn_Comprar',1
 EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Cliente','Btn_Historial_De_Cliente',1
 EXECUTE GEDIENTOS.SP_Update_Funionalidad_Por_Rol 'Cliente','Btn_Canje_De_Puntos',1
+GO
 
+-- Agrego los Grados de publicacion
+INSERT INTO GEDIENTOS.Grado_Publicacion(Grado_Publicacion_Descripcion, Grado_Publicacion_Porcentaje) VALUES('Alta',20)
+INSERT INTO GEDIENTOS.Grado_Publicacion(Grado_Publicacion_Descripcion, Grado_Publicacion_Porcentaje) VALUES('Media',10)
+INSERT INTO GEDIENTOS.Grado_Publicacion(Grado_Publicacion_Descripcion, Grado_Publicacion_Porcentaje) VALUES('Baja',5)
+GO
+
+/*******************************************
+*	Creo las FK
+*******************************************/
+
+ALTER TABLE GEDIENTOS.Asignacion_Rol ADD CONSTRAINT FK_Usuario_Asignacion_Rol FOREIGN KEY (Asignacion_Rol_Usuario_Id) REFERENCES GEDIENTOS.Usuario(Usuario_Id);
+ALTER TABLE GEDIENTOS.Asignacion_Rol ADD CONSTRAINT FK_Rol_Asignacion_Rol FOREIGN KEY (Asignacion_Rol_Id) REFERENCES GEDIENTOS.Rol(Rol_Id);
+ALTER TABLE GEDIENTOS.Rol_X_Funcionalidad ADD CONSTRAINT FK_Funcionalidad_Rol_X_Funcionalidad FOREIGN KEY (Funcionalidad_Id) REFERENCES GEDIENTOS.Funcionalidad(Funcionalidad_Id);
+ALTER TABLE GEDIENTOS.Rol_X_Funcionalidad ADD CONSTRAINT FK_Rol_Rol_X_Funcionalidad FOREIGN KEY (Rol_Id) REFERENCES GEDIENTOS.Rol(Rol_Id);
+ALTER TABLE GEDIENTOS.Tarjeta_Credito ADD CONSTRAINT FK_Cliente_Tarjeta_Credito FOREIGN KEY (Tarjeta_Credito_Cliente_Id) REFERENCES GEDIENTOS.Cliente(Cliente_Id);
+ALTER TABLE GEDIENTOS.Cliente ADD CONSTRAINT FK_Usuario_Cliente FOREIGN KEY (Cliente_Usuario_Id) REFERENCES GEDIENTOS.Usuario(Usuario_Id);
+ALTER TABLE GEDIENTOS.Empresa ADD CONSTRAINT FK_Usuario_Empresa FOREIGN KEY (Empresa_Usuario_Id) REFERENCES GEDIENTOS.Usuario(Usuario_Id);
+ALTER TABLE GEDIENTOS.Compra ADD CONSTRAINT FK_Forma_De_Pago_Compra FOREIGN KEY (Compra_Forma_De_Pago_Id) REFERENCES GEDIENTOS.Forma_De_Pago(Forma_De_Pago_Id);
+ALTER TABLE GEDIENTOS.Compra ADD CONSTRAINT FK_Factura_Compra FOREIGN KEY (Compra_Factura_Id) REFERENCES GEDIENTOS.Factura(Factura_Id);
+ALTER TABLE GEDIENTOS.Item_Factura ADD CONSTRAINT FK_Factura_Item_Factura FOREIGN KEY (Factura_Id) REFERENCES GEDIENTOS.Factura(Factura_Id);
+ALTER TABLE GEDIENTOS.Compra ADD CONSTRAINT FK_Ubicacion_Compra FOREIGN KEY (Compra_Ubicacion_Id) REFERENCES GEDIENTOS.Ubicacion(Ubicacion_Id);
+ALTER TABLE GEDIENTOS.Item_Factura ADD CONSTRAINT FK_Compra_Item_Factura FOREIGN KEY (Item_Factura_Compra_Id) REFERENCES GEDIENTOS.Compra(Compra_Id);
+ALTER TABLE GEDIENTOS.Ubicacion ADD CONSTRAINT FK_Tipo_De_Ubicacion FOREIGN KEY (Ubicacion_Tipo_Descripcion_Id) REFERENCES GEDIENTOS.Tipo_De_Ubicacion(Tipo_De_Ubicacion_Id);
+ALTER TABLE GEDIENTOS.Ubicacion ADD CONSTRAINT FK_Espectaculo_Ubicacion FOREIGN KEY (Ubicacion_Espectaculo_Id) REFERENCES GEDIENTOS.Espectaculo(Espectaculo_Id);
+ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Estado_Publicacion_Espectaculo FOREIGN KEY (Espectaculo_Estado_Publicacion_Id) REFERENCES GEDIENTOS.Estado_Publicacion(Estado_Publicacion_Id);
+ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Grado_Publicacion_Espectaculo FOREIGN KEY (Espectaculo_Grado_Publicacion_Id) REFERENCES GEDIENTOS.Grado_Publicacion(Grado_Publicacion_Id);
+ALTER TABLE GEDIENTOS.Empresa ADD CONSTRAINT FK_Grado_Publicacion_Empresa FOREIGN KEY (Empresa_Grado_Publicacion_Id) REFERENCES GEDIENTOS.Grado_Publicacion(Grado_Publicacion_Id);
+ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Rubro_Espectaculo FOREIGN KEY (Espectaculo_Rubro_Id) REFERENCES GEDIENTOS.Rubro(Rubro_Id);
+ALTER TABLE GEDIENTOS.Espectaculo ADD CONSTRAINT FK_Empresa_Espectaculo FOREIGN KEY (Espectaculo_Empresa_Id) REFERENCES GEDIENTOS.Empresa(Empresa_Id);
 GO

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PalcoNet.Abm_Rol;
 using PalcoNet.Registro_de_Usuario;
+using PalcoNet.Abm_Grado;
 
 namespace PalcoNet.Menu
 {
@@ -83,7 +84,8 @@ namespace PalcoNet.Menu
 
         private void Btn_ABM_Grado_De_Publicacion_Click(object sender, EventArgs e)
         {
-
+            BusquedaPorGrado busquedaPorGrado = new BusquedaPorGrado(this.IdUsuario);
+            busquedaPorGrado.ShowDialog();
         }
 
         private void Btn_Generar_Publicacion_Click(object sender, EventArgs e)

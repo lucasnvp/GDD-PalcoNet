@@ -10,6 +10,8 @@ IF EXISTS (SELECT * FROM sys.objects where name = 'SP_Get_Funcionalidades_Rol') 
 IF EXISTS (SELECT * FROM sys.objects where name = 'SP_Update_Rol') DROP PROCEDURE GEDIENTOS.SP_Update_Rol;
 IF EXISTS (SELECT * FROM sys.objects where name = 'SP_Create_Cliente') DROP PROCEDURE GEDIENTOS.SP_Create_Cliente;
 IF EXISTS (SELECT * FROM sys.objects where name = 'SP_Create_Empresa') DROP PROCEDURE GEDIENTOS.SP_Create_Empresa;
+IF EXISTS (SELECT * FROM sys.objects where name = 'SP_Get_Grados_Publicacion') DROP PROCEDURE GEDIENTOS.SP_Get_Grados_Publicacion;
+IF EXISTS (SELECT * FROM sys.objects where name = 'SP_Update_Grados_Publicacion') DROP PROCEDURE GEDIENTOS.SP_Update_Grados_Publicacion;
 
 IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Usuario_Asignacion_Rol') ALTER TABLE GEDIENTOS.Asignacion_Rol DROP CONSTRAINT FK_Usuario_Asignacion_Rol;
 IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Rol_Asignacion_Rol') ALTER TABLE GEDIENTOS.Asignacion_Rol DROP CONSTRAINT FK_Rol_Asignacion_Rol;
@@ -26,7 +28,8 @@ IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Compra_Item_Factura') ALTE
 IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Tipo_De_Ubicacion') ALTER TABLE GEDIENTOS.Ubicacion DROP CONSTRAINT FK_Tipo_De_Ubicacion;
 IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Espectaculo_Ubicacion') ALTER TABLE GEDIENTOS.Ubicacion DROP CONSTRAINT FK_Espectaculo_Ubicacion;
 IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Estado_Publicacion_Espectaculo') ALTER TABLE GEDIENTOS.Espectaculo DROP CONSTRAINT FK_Estado_Publicacion_Espectaculo;
-IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Precio_Grado_Espectaculo') ALTER TABLE GEDIENTOS.Espectaculo DROP CONSTRAINT FK_Precio_Grado_Espectaculo;
+IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Grado_Publicacion_Espectaculo') ALTER TABLE GEDIENTOS.Espectaculo DROP CONSTRAINT FK_Grado_Publicacion_Espectaculo;
+IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Grado_Publicacion_Empresa') ALTER TABLE GEDIENTOS.Espectaculo DROP CONSTRAINT FK_Grado_Publicacion_Empresa;
 IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Rubro_Espectaculo') ALTER TABLE GEDIENTOS.Espectaculo DROP CONSTRAINT FK_Rubro_Espectaculo;
 IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Empresa_Espectaculo') ALTER TABLE GEDIENTOS.Espectaculo DROP CONSTRAINT FK_Empresa_Espectaculo;
 
@@ -39,7 +42,7 @@ IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Cliente') DROP TABLE [GEDIENT
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Empresa') DROP TABLE [GEDIENTOS].[Empresa]
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Espectaculo') DROP TABLE [GEDIENTOS].[Espectaculo]
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Estado_Publicacion') DROP TABLE [GEDIENTOS].[Estado_Publicacion]
-IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Precio_Grado') DROP TABLE [GEDIENTOS].[Precio_Grado]
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Grado_Publicacion') DROP TABLE [GEDIENTOS].[Grado_Publicacion]
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Rubro') DROP TABLE [GEDIENTOS].[Rubro]
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Tarjeta_Credito') DROP TABLE [GEDIENTOS].[Tarjeta_Credito]
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Ubicacion') DROP TABLE [GEDIENTOS].[Ubicacion]

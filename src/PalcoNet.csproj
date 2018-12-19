@@ -119,6 +119,7 @@
     <Compile Include="Conexiones\Parametros.cs" />
     <Compile Include="Conexiones\SqlServer.cs" />
     <Compile Include="DAOs\ClienteDAO.cs" />
+    <Compile Include="DAOs\EmpresaDAO.cs" />
     <Compile Include="Editar Publicacion\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
