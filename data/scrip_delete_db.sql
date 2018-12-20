@@ -29,7 +29,7 @@ IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Tipo_De_Ubicacion') ALTER 
 IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Espectaculo_Ubicacion') ALTER TABLE GEDIENTOS.Ubicacion DROP CONSTRAINT FK_Espectaculo_Ubicacion;
 IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Estado_Publicacion_Espectaculo') ALTER TABLE GEDIENTOS.Espectaculo DROP CONSTRAINT FK_Estado_Publicacion_Espectaculo;
 IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Grado_Publicacion_Espectaculo') ALTER TABLE GEDIENTOS.Espectaculo DROP CONSTRAINT FK_Grado_Publicacion_Espectaculo;
-IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Grado_Publicacion_Empresa') ALTER TABLE GEDIENTOS.Espectaculo DROP CONSTRAINT FK_Grado_Publicacion_Empresa;
+IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Grado_Publicacion_Empresa') ALTER TABLE GEDIENTOS.Empresa DROP CONSTRAINT FK_Grado_Publicacion_Empresa;
 IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Rubro_Espectaculo') ALTER TABLE GEDIENTOS.Espectaculo DROP CONSTRAINT FK_Rubro_Espectaculo;
 IF EXISTS (SELECT * FROM sys.objects where name = 'FK_Empresa_Espectaculo') ALTER TABLE GEDIENTOS.Espectaculo DROP CONSTRAINT FK_Empresa_Espectaculo;
 
