@@ -17,14 +17,15 @@ namespace PalcoNet.Abm_Cliente
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Btn_Cerrar_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
-        private void ListadoClientes_Load(object sender, EventArgs e)
+        private void Btn_Nuevo_Cliente_Click(object sender, EventArgs e)
         {
-
+            ListadoClientes listadoClientes = new ListadoClientes();
+            listadoClientes.ShowDialog();
         }
     }
 }

@@ -17,9 +17,15 @@ namespace PalcoNet.Abm_Empresa_Espectaculo
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Btn_Cerrar_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void Btn_Nueva_Empresa_Click(object sender, EventArgs e)
+        {
+            ListadoEmpresa listadoEmpresa = new ListadoEmpresa();
+            listadoEmpresa.ShowDialog();
         }
     }
 }
