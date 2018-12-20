@@ -24,8 +24,8 @@ namespace PalcoNet.Abm_Empresa_Espectaculo
 
         private void Btn_Nueva_Empresa_Click(object sender, EventArgs e)
         {
-            ListadoEmpresa listadoEmpresa = new ListadoEmpresa();
-            listadoEmpresa.ShowDialog();
+            AltaEmpresa altaEmpresa = new AltaEmpresa();
+            altaEmpresa.ShowDialog();
         }
     }
 }

@@ -24,8 +24,13 @@ namespace PalcoNet.Abm_Cliente
 
         private void Btn_Nuevo_Cliente_Click(object sender, EventArgs e)
         {
-            ListadoClientes listadoClientes = new ListadoClientes();
-            listadoClientes.ShowDialog();
+            AltaClientes altaCliente = new AltaClientes();
+            altaCliente.ShowDialog();
+        }
+
+        private void Btn_Buscar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
