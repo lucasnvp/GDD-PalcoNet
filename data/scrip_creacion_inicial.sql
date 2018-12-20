@@ -61,7 +61,7 @@ IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Cliente') DROP TABLE [GEDIENT
 CREATE TABLE [GEDIENTOS].[Cliente](
   Cliente_Id INT PRIMARY KEY IDENTITY(1,1),
   Cliente_Usuario_Id INT ,
-  Cliente_Dni NUMERIC (18) UNIQUE,
+  Cliente_Dni NUMERIC (18,0) UNIQUE,
   Cliente_Apellido VARCHAR (255) NOT NULL,
   Cliente_Nombre VARCHAR (255) NOT NULL,
   Cliente_Fecha_Nacimiento DATETIME,
@@ -173,7 +173,7 @@ CREATE TABLE [GEDIENTOS].[Compra](
   Compra_Ubicacion_Id INT ,
   Compra_Forma_De_Pago_Id Int ,
   Compra_Fecha_Compra DATE ,
-  Compra_Cantidad NUMERIC (18)
+  Compra_Cantidad NUMERIC (18,0)
 )
 GO 
 
@@ -195,7 +195,7 @@ CREATE TABLE [GEDIENTOS].[Item_Factura](
   Item_Factura_Compra_Id INT ,
   Item_Factura_Monto NUMERIC (18, 2) ,
   Item_Factura_Cantidad NUMERIC (18, 0) ,
-  Item_Factura_Descripcion VARCHAR (120) ,
+  Item_Factura_Descripcion VARCHAR (60) ,
 )
 GO
 
@@ -211,7 +211,7 @@ GO
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'Tipo_De_Ubicacion') DROP TABLE [GEDIENTOS].[Tipo_De_Ubicacion]
 CREATE TABLE [GEDIENTOS].[Tipo_De_Ubicacion](
   Tipo_De_Ubicacion_Id INT PRIMARY KEY IDENTITY(1,1),
-  Tipo_De_Ubicacion_Codigo NUMERIC (18) ,
+  Tipo_De_Ubicacion_Codigo NUMERIC (18,0) ,
   Tipo_De_Ubicacion_Descripcion VARCHAR (255) 
 )
 GO
