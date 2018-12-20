@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using PalcoNet.Abm_Rol;
 using PalcoNet.Registro_de_Usuario;
 using PalcoNet.Abm_Grado;
+using PalcoNet.Abm_Cliente;
+using PalcoNet.Abm_Empresa_Espectaculo;
 
 namespace PalcoNet.Menu
 {
@@ -69,12 +71,14 @@ namespace PalcoNet.Menu
 
         private void Btn_ABM_Cliente_Click(object sender, EventArgs e)
         {
-
+            ListadoClientes listadoClientes = new ListadoClientes();
+            listadoClientes.ShowDialog();
         }
 
         private void Btn_ABM_Empresa_Click(object sender, EventArgs e)
         {
-
+            ListadoEmpresa listadoEmpresa = new ListadoEmpresa();
+            listadoEmpresa.ShowDialog();
         }
 
         private void Btn_ABM_Rubro_Click(object sender, EventArgs e)
